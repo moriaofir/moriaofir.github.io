@@ -1,0 +1,34 @@
+---
+layout: base.njk
+permalink: reviews.html
+canonical: reviews.html
+pageKey: reviews
+title: "המלצות של זוגות על ההזמנות המאוירות · מוריה אופיר"
+description: "מה זוגות ומשפחות כתבו לי אחרי שקיבלו את ההזמנה המאוירת שלהם."
+whatsappMessage: "היי מוריה, קראתי את ההמלצות באתר ואשמח לשמוע על הזמנה מאוירת"
+---
+<section class="section section-blush">
+  <div class="wrap stack">
+    <div class="stack center narrow" style="margin-inline: auto; margin-bottom: 12px">
+      <p class="hand">מילים חמות</p>
+      <h1>מה אומרים עליי</h1>
+      <p class="muted">אלה הודעות שזוגות ומשפחות שלחו לי אחרי שקיבלו את ההזמנה. כל אחת מהן משמחת אותי מחדש.</p>
+    </div>
+    {%- if testimonials.items.length %}
+    <div class="quotes quotes-page">
+      {%- for t in testimonials.items %}
+      {% include "testimonial.njk" %}
+      {%- endfor %}
+    </div>
+    {%- else %}
+    <p class="center muted">ההמלצות הראשונות בדרך.</p>
+    {%- endif %}
+  </div>
+</section>
+
+<section class="section cta-wash">
+  <div class="wrap stack center">
+    <h2>רוצים הזמנה משלכם?</h2>
+    <a class="btn btn-primary" href="contact.html">ספרו לי על האירוע</a>
+  </div>
+</section>

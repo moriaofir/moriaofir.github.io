@@ -1,0 +1,57 @@
+---
+layout: base.njk
+permalink: contact.html
+canonical: contact.html
+pageKey: contact
+title: "יצירת קשר להזמנה מאוירת · מוריה אופיר"
+description: "ספרו לי על האירוע ונתחיל לצייר. וואטסאפ, טלפון או טופס קצר."
+---
+<section class="section">
+  <div class="wrap stack narrow">
+    <h1>בואו נדבר</h1>
+    <p class="muted">ספרו לי קצת על האירוע, ואחזור אליכם בהקדם. הכי מהיר לתפוס אותי בוואטסאפ.</p>
+    <p class="personal-note">כל הודעה מגיעה ישר אליי. אין נציגים ואין בוט, אני קוראת ואני עונה{% if site.replyTime %}, {{ site.replyTime }}{% endif %}.</p>
+    <p class="muted">{{ site.quoteNote }}</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="{{ site.whatsappDefault | whatsapp(site.phone) }}">{% waIcon 20 %} לשלוח הודעה בוואטסאפ</a>
+    </div>
+
+    <h2 style="margin-top: 24px">או השאירו פרטים</h2>
+    <form class="form" data-whatsapp="{{ site.phone }}" action="mailto:{{ site.email }}" method="post" enctype="text/plain">
+      <div class="field"><label for="f-name">שם</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="f-phone">טלפון</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" style="text-align: right" required></div>
+      <div class="field">
+        <label for="f-event">סוג האירוע</label>
+        <select id="f-event" name="event" required>
+          <option value="">לבחור…</option>
+          <option>חתונה</option><option>חינה</option><option>ברית</option><option>בר / בת מצווה</option><option>יום הולדת</option><option>אחר</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-date">תאריך האירוע <span class="opt">(משוער זה בסדר)</span></label><input id="f-date" name="date" type="text" placeholder="למשל: אביב 2027"></div>
+      <fieldset class="field checks">
+        <legend>מעניין אותי גם <span class="opt">(רשות)</span></legend>
+        {%- for s in services.products.concat(services.items) %}
+        <label><input type="checkbox" name="extras" value="{{ s.short }}"> {{ s.short }}</label>
+        {%- endfor %}
+      </fieldset>
+      <div class="field"><label for="f-msg">ספרו לי קצת <span class="opt">(רשות)</span></label><textarea id="f-msg" name="message"></textarea></div>
+      <details class="inspo">
+        <summary>רוצים לספר לי עוד, כדי שהסקיצה הראשונה תהיה קרובה? <span class="opt">(רשות)</span></summary>
+        <div class="field"><label for="f-colors">צבעים שאתם אוהבים</label><input id="f-colors" name="colors" type="text" placeholder="למשל: ירוק זית ושמנת"></div>
+        <div class="field"><label for="f-motif">משהו שחשוב לכם שיופיע בציור</label><input id="f-motif" name="motif" type="text" placeholder="פרח, עץ, חיית מחמד, המקום שבו הכרתם"></div>
+        <div class="field"><label for="f-place">איפה האירוע</label><input id="f-place" name="place" type="text" placeholder="שם המקום או העיר"></div>
+        <div class="field"><label for="f-inspo">השראה <span class="opt">(קישור לפינטרסט, לאינסטגרם או לכל דבר שאהבתם)</span></label><input id="f-inspo" name="inspo" type="url" dir="ltr" style="text-align: right" placeholder="https://"></div>
+        <p class="small">יש לכם תמונה של המקום או משהו שאהבתם? אחרי השליחה פשוט צרפו אותה בוואטסאפ.</p>
+      </details>
+      <button class="btn btn-primary" type="submit">שליחה</button>
+      <p class="form-note">הלחיצה תפתח וואטסאפ עם הפרטים שמילאתם, ונשאר רק לשלוח.</p>
+    </form>
+
+    <h2 style="margin-top: 24px">פרטים</h2>
+    <ul class="contact-list">
+      <li>וואטסאפ: <a href="{{ site.whatsappDefault | whatsapp(site.phone) }}" dir="ltr">{{ site.phoneDisplay }}</a></li>
+      <li>מייל: <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+      <li>{{ site.area }}</li>
+    </ul>
+  </div>
+</section>

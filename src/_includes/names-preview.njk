@@ -1,0 +1,35 @@
+{#- "השמות שלכם על ההזמנה": הזוג כותב שמות ותאריך ורואה אותם מיד על הזמנה לדוגמה. הקוד ב־assets/js/effects.js -#}
+<section class="section section-white names-section">
+  <div class="wrap">
+    <div class="names-try">
+      <div class="stack">
+        <p class="hand">רגע, איך זה ייראה אצלנו?</p>
+        <h2>השמות שלכם על ההזמנה</h2>
+        <p class="muted">כתבו את השמות ואת התאריך, ותראו אותם על הנייר. זו רק טעימה: בהזמנה האמיתית אני מציירת הכול מחדש, בשבילכם.</p>
+        <form class="names-form" onsubmit="return false">
+          <div class="row">
+            <label for="nt-a">שם אחד<input id="nt-a" type="text" maxlength="18" placeholder="נועם" autocomplete="off"></label>
+            <label for="nt-b">והשם השני<input id="nt-b" type="text" maxlength="18" placeholder="גיתית" autocomplete="off"></label>
+          </div>
+          <label for="nt-date">התאריך<input id="nt-date" type="text" maxlength="30" placeholder="25/02/2026" autocomplete="off"></label>
+        </form>
+        <div class="actions">
+          <a class="btn btn-primary names-cta" href="{{ 'היי מוריה, ניסינו את השמות שלנו על ההזמנה באתר ואשמח לשמוע עוד' | whatsapp(site.phone) }}">{% waIcon 20 %} רוצים אחת כזאת? כתבו לי</a>
+        </div>
+      </div>
+      {#- צד הטקסט של ההזמנה של גיתית ונועם (בעל האתר ביקש, 2026-10-21). השמות והתאריך מתחלפים לפי מה שכותבים -#}
+      <div class="names-card names-card-gn" aria-live="polite">
+        <img class="nc-sprig" src="assets/img/effects/sprig.webp" alt="" width="348" height="262" loading="lazy">
+        <p class="nc-top">שמחים להזמינכם לחגוג עימנו את יום נישואינו</p>
+        <p class="nc-names"><span class="nc-a">נועם</span> <span class="nc-amp">&amp;</span> <span class="nc-b">גיתית</span></p>
+        <p class="nc-info">שיתקיים ביום רביעי</p>
+        <p class="nc-date">25/02/2026</p>
+        <p class="nc-info">בגן האירועים שבחרתם</p>
+        <p class="nc-info"><b>קבלת פנים:</b> 18:30<br><b>חופה:</b> 19:30</p>
+        <p class="nc-welcome">נשמח לראותכם</p>
+        <img class="nc-sprig nc-sprig-small" src="assets/img/effects/sprig.webp" alt="" width="348" height="262" loading="lazy">
+        <div class="nc-parents"><p><b>הורי הכלה</b>ההורים שלכם</p><p><b>הורי החתן</b>ההורים שלכם</p></div>
+      </div>
+    </div>
+  </div>
+</section>

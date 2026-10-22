@@ -1,0 +1,51 @@
+---
+layout: base.njk
+permalink: wording.html
+canonical: wording.html
+pageKey: wording
+title: "נוסחים להזמנה לחתונה, לחינה, לבר מצווה ולברית · מוריה אופיר"
+description: "נוסחים לדוגמה להזמנה לחתונה, Save the Date, חינה, בר ובת מצווה וברית. מעתיקים, משנים, וההזמנה מצוירת סביבם."
+whatsappMessage: "היי מוריה, יש לנו נוסח ואשמח לשמוע על הזמנה מאוירת"
+---
+<section class="section">
+  <div class="wrap stack narrow">
+    <p class="hand">הנוסח שלכם, הציור שלי</p>
+    <h1>נוסחים להזמנה, לדוגמה</h1>
+    <p class="muted">את הנוסח אתם שולחים לי, ואני מציירת סביבו. אם אתם מתלבטים איך להתחיל, הנה כמה נוסחים שאפשר להעתיק, לשנות ולהפוך לשלכם. מה שבסוגריים מחליפים בפרטים שלכם.</p>
+    <nav class="filters" aria-label="סוגי אירועים">
+      {%- for g in wording.groups %}
+      <a class="chip" href="#w-{{ loop.index }}">{{ g.title }}</a>
+      {%- endfor %}
+    </nav>
+  </div>
+</section>
+
+{%- for g in wording.groups %}
+<section class="section {{ 'section-white' if loop.index0 % 2 == 0 else 'section-beige' }}" id="w-{{ loop.index }}">
+  <div class="wrap stack narrow">
+    <h2>{{ g.title }}</h2>
+    <div class="wording-list">
+      {%- for w in g.items %}
+      <article class="wording">
+        <h3>{{ w.name }}</h3>
+        <p class="wording-text">{{ w.text }}</p>
+        <button class="btn btn-outline copy-btn" type="button">להעתיק את הנוסח</button>
+      </article>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{%- endfor %}
+
+{% include "guide-cta.njk" %}
+
+<section class="section cta-wash">
+  <div class="wrap stack center narrow">
+    <h2>יש לכם נוסח? בואו נצייר סביבו</h2>
+    <p class="muted">שלחו לי את הנוסח, ספרו לי קצת עליכם, ואני אתחיל מסקיצה.</p>
+    <div class="actions" style="justify-content: center">
+      <a class="btn btn-primary" href="{{ whatsappMessage | whatsapp(site.phone) }}">{% waIcon 20 %} לשלוח לי את הנוסח</a>
+      <a class="btn btn-outline" href="gallery.html">לראות עבודות</a>
+    </div>
+  </div>
+</section>

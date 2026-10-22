@@ -1,0 +1,121 @@
+---
+layout: base.njk
+permalink: guide.html
+canonical: guide.html
+pageKey: guide
+noindex: true
+eleventyExcludeFromCollections: true
+title: "המדריך הקטן להזמנה · מוריה אופיר"
+description: "מתי מתחילים, מה כותבים, איך בודקים שאין טעויות ואיך שולחים. כל מה שצריך לדעת על ההזמנה, בעמוד אחד."
+whatsappMessage: "היי מוריה, קראתי את המדריך ואשמח לדבר על ההזמנה שלנו"
+---
+{#- מדריך לזוגות. לא בתפריט ולא במנועי חיפוש: מוריה שולחת את הקישור בוואטסאפ למי שביקש אותו (הכפתור ב־_includes/guide-cta.njk) -#}
+<section class="section">
+  <div class="wrap stack narrow">
+    <p class="hand">בשבילכם, מתנה קטנה</p>
+    <h1>המדריך הקטן להזמנה</h1>
+    <p class="muted">אספתי כאן את מה שאני מספרת לכל זוג בשיחה הראשונה: מתי להתחיל, מה חייב להופיע בהזמנה, איך בודקים שאין טעויות, ואיך שולחים. לא צריך לזכור הכול. שמרו את העמוד, ותחזרו אליו כשתצטרכו.</p>
+    <div class="actions guide-tools">
+      <button class="btn btn-outline" type="button" onclick="window.print()">לשמור כ־PDF או להדפיס</button>
+    </div>
+    <nav class="filters" aria-label="תוכן המדריך">
+      <a class="chip" href="#g-when">מתי מתחילים</a>
+      <a class="chip" href="#g-prep">מה מכינים</a>
+      <a class="chip" href="#g-text">מה כותבים</a>
+      <a class="chip" href="#g-check">בדיקה לפני שליחה</a>
+      <a class="chip" href="#g-send">שליחה והדפסה</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section section-beige" id="g-when">
+  <div class="wrap stack narrow">
+    <h2>1. מתי מתחילים</h2>
+    <p class="muted">מהסקיצה ועד הקובץ הסופי עוברים בדרך כלל כשבועיים. כדי שלא יהיה לחץ, ככה נראה לוח הזמנים לפני האירוע:</p>
+    <ul class="guide-list">
+      {%- for s in timeline.steps %}
+      <li><strong>{{ s.weeks }} שבועות לפני:</strong> {{ s.text }}</li>
+      {%- endfor %}
+    </ul>
+    <p class="small">רוצים את התאריכים המדויקים? <a href="how-it-works.html#when">כתבו את תאריך האירוע, ותקבלו לוח זמנים</a>. ואם הזמן כבר קצר, כתבו לי בכל זאת ונראה מה אפשר.</p>
+  </div>
+</section>
+
+<section class="section section-white" id="g-prep">
+  <div class="wrap stack narrow">
+    <h2>2. מה כדאי להכין לפני שמדברים</h2>
+    <p class="muted">לא חייבים שיהיה הכול. גם "אין לנו מושג" זו נקודת התחלה מצוינת. אבל אם יש לכם את אלה, נתקדם מהר יותר:</p>
+    <ul class="guide-list guide-checks">
+      <li>תאריך ושם המקום, גם אם עוד לא סופיים</li>
+      <li>סוג האירוע: חתונה, חינה, בר או בת מצווה, ברית</li>
+      <li>צבעים שאתם אוהבים, או צבעים של האירוע</li>
+      <li>משהו שלכם שתרצו בציור: פרח, המקום שבו הכרתם, חיית מחמד, נוף</li>
+      <li>תמונות השראה, מפינטרסט, מאינסטגרם או מהגלריה שלי</li>
+      <li>האם צריך גם Save the Date, תפריטים או הושבה באותו סגנון</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-beige" id="g-text">
+  <div class="wrap stack narrow">
+    <h2>3. מה חייב להופיע בנוסח</h2>
+    <p class="muted">את הנוסח אתם שולחים לי, ואני מציירת סביבו. אלה הפרטים שכדאי לוודא שיש בו:</p>
+    <ul class="guide-list guide-checks">
+      <li>השמות שלכם, כמו שאתם רוצים שיופיעו</li>
+      <li>שמות ההורים, אם ההזמנה יוצאת מהם</li>
+      <li>היום בשבוע, התאריך העברי והתאריך הלועזי</li>
+      <li>שעת קבלת הפנים ושעת החופה</li>
+      <li>שם המקום והעיר, ואם צריך גם כתובת</li>
+      <li>אישור הגעה: למי עונים ועד מתי, אם רוצים</li>
+    </ul>
+    <p class="small">שימו לב: התאריך העברי מתחלף בשקיעה. אם החופה בערב, כדאי לבדוק עם המשפחה או עם הרב איזה תאריך עברי לכתוב.</p>
+    <p class="small">מתלבטים איך לנסח? <a href="wording.html">יש כאן נוסחים לדוגמה</a> שאפשר להעתיק ולשנות.</p>
+  </div>
+</section>
+
+<section class="section section-white" id="g-check">
+  <div class="wrap stack narrow">
+    <h2>4. בדיקה לפני שההזמנה יוצאת</h2>
+    <p class="muted">לפני הקובץ הסופי אני שולחת לכם רשימה לאישור. כדאי שגם מישהו נוסף יעבור עליה, עם עיניים טריות:</p>
+    <ul class="guide-list guide-checks">
+      <li>האיות של כל השמות, גם של ההורים</li>
+      <li>התאריך העברי מתאים לתאריך הלועזי</li>
+      <li>היום בשבוע נכון לתאריך</li>
+      <li>השעות, ושהחופה אחרי קבלת הפנים</li>
+      <li>שם המקום והכתובת, בדיוק כמו בוויז</li>
+      <li>מספר הטלפון לאישור הגעה, ספרה אחרי ספרה</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-beige" id="g-send">
+  <div class="wrap stack narrow">
+    <h2>5. שליחה והדפסה</h2>
+    <p class="muted">בסוף אתם מקבלים תמונה לשליחה בוואטסאפ וקובץ PDF מוכן להדפסה.</p>
+    <h3>בוואטסאפ</h3>
+    <ul class="guide-list">
+      <li>שלחו את התמונה באיכות HD, כדי שהציור יישאר חד.</li>
+      <li>בהודעה נפרדת אחריה, שלחו קישור לוויז ולאישור הגעה. ככה הכי נוח לאורחים ללחוץ.</li>
+      <li>Save the Date שולחים בערך ארבעה חודשים לפני, והזמנה בערך שישה שבועות לפני.</li>
+    </ul>
+    <h3>בדפוס</h3>
+    <ul class="guide-list">
+      <li>סופרים הזמנות לפי משפחות ולא לפי אורחים, ומוסיפים בערך 10% ליתר ביטחון ולמזכרת.</li>
+      <li>ספרו לי מראש באיזה גודל אתם מדפיסים, כדי שהקובץ יתאים.</li>
+      <li>נייר עבה ומט שומר על המרקם של צבעי המים יותר מנייר מבריק.</li>
+      <li>בקשו מבית הדפוס הדפסת ניסיון אחת לפני כל הכמות, ובדקו אותה באור יום.</li>
+    </ul>
+    <p class="small">ואם תרצו, את הציור המקורי של ההזמנה אפשר לקבל ממוסגר, במשלוח עד הבית.</p>
+  </div>
+</section>
+
+<section class="section cta-wash">
+  <div class="wrap stack center narrow">
+    <h2>מוכנים להתחיל?</h2>
+    <p class="muted">ספרו לי על האירוע, ונבנה יחד את ההזמנה שלכם. אני עונה בעצמי{% if site.replyTime %}, {{ site.replyTime }}{% endif %}.</p>
+    <div class="actions" style="justify-content: center">
+      <a class="btn btn-primary" href="{{ whatsappMessage | whatsapp(site.phone) }}">{% waIcon 20 %} לכתוב לי בוואטסאפ</a>
+      <a class="btn btn-outline" href="gallery.html">לראות עבודות</a>
+    </div>
+  </div>
+</section>

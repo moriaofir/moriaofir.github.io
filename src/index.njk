@@ -1,0 +1,174 @@
+---
+layout: base.njk
+permalink: index.html
+pageKey: home
+title: "הזמנות לחתונה מאוירות בצבעי מים · מוריה אופיר"
+description: "הזמנות מצוירות ביד בצבעי מים, בהתאמה אישית לחתונה, חינה, בר מצווה וברית. לשליחה בוואטסאפ או להדפסה, במחיר הוגן."
+---
+{%- set waLink = site.whatsappDefault | whatsapp(site.phone) -%}
+<section class="hero">
+  <div class="wrap">
+    <img class="arch hero-img" src="assets/img/gallery/hummingbirds-invitation-600.webp" srcset="assets/img/gallery/hummingbirds-invitation-600.webp 600w, assets/img/gallery/hummingbirds-invitation.webp 1195w" sizes="(min-width: 900px) 420px, 240px" alt="זוג יונקי דבש ופרחים, מצוירים בצבעי מים על הזמנה" width="420" height="516" fetchpriority="high">
+    <div class="stack">
+      <p class="hand">מצויר ביד, על נייר אמיתי</p>
+      <h1 class="reveal">הזמנות מצוירות ביד, בצבעי&nbsp;מים, רק&nbsp;בשבילכם</h1>
+      <p class="muted">כל הזמנה מתחילה בדף לבן ומכחול. אני מציירת אותה מאפס, לפי הסיפור שלכם, כדי שהאורחים יחזיקו ביד משהו שאין לאף אחד אחר.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="gallery.html">לראות עבודות</a>
+        <a class="btn btn-outline" href="{{ waLink }}">{% waIcon 20 %} לדבר איתי בוואטסאפ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="promise" aria-label="ככה אני עובדת">
+  <div class="wrap">
+    <ul>
+      <li><strong>אני עונה לכם בעצמי</strong><span>בלי נציגים ובלי בוט. כל הודעה מגיעה ישר אליי</span></li>
+      {%- if site.replyTime %}
+      <li><strong>זמינה לכם</strong><span>{{ site.replyTime }}</span></li>
+      {%- endif %}
+      <li><strong>מחיר אחרי שיחה</strong><span>{{ site.quoteNote }}</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-beige">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>העבודות שלי</h2>
+      <a class="text-link" href="gallery.html">לכל העבודות</a>
+    </div>
+    {% include "extras-carousel.njk" %}
+    <p class="small" style="margin-top: 20px">מציירת גם לחינה, ברית, בר ובת מצווה וכל שמחה אחרת.</p>
+  </div>
+</section>
+
+{%- if testimonials.items.length %}
+<section class="section section-blush">
+  <div class="wrap stack">
+    <h2 style="text-align: center">מה אומרים עליי</h2>
+    {#- באנר מתחלף: המלצה אחת בכל פעם, מתחלפת לבד -#}
+    <div class="quote-rotator" data-interval="7000" aria-roledescription="carousel" aria-label="המלצות">
+      <div class="quote-rotator-track">
+        {%- for t in testimonials.items %}
+        <div class="quote-slide{% if loop.first %} is-active{% endif %}"{% if not loop.first %} aria-hidden="true"{% endif %}>
+          {% include "testimonial.njk" %}
+        </div>
+        {%- endfor %}
+      </div>
+      {%- if testimonials.items.length > 1 %}
+      <div class="carousel-dots" role="group" aria-label="בחירת המלצה">
+        {%- for t in testimonials.items %}
+        <button type="button" class="carousel-dot" aria-label="המלצה {{ loop.index }}"{% if loop.first %} aria-current="true"{% endif %}></button>
+        {%- endfor %}
+      </div>
+      {%- endif %}
+    </div>
+    <p class="center"><a class="text-link" href="reviews.html">לכל ההמלצות</a></p>
+    {%- if site.reviews.url and site.reviews.count >= 5 %}
+    <p class="center"><a class="text-link" href="{{ site.reviews.url }}" rel="noopener">{{ site.reviews.count }} ביקורות של זוגות ב{{ site.reviews.platform }}</a></p>
+    {%- endif %}
+  </div>
+</section>
+{%- endif %}
+
+<section class="section">
+  <div class="wrap stack">
+    <p class="hand">מה אפשר להזמין</p>
+    <h2>שתי דרכים לעבוד איתי</h2>
+    <div class="extras-strip extras-strip-two">
+      {%- for s in services.products %}
+      {%- set small = s.image | small %}
+      <a href="services.html#s-{{ s.icon }}">
+        {%- if s.image %}<img class="strip-img" src="{{ small or s.image }}" alt="{{ s.alt }}" loading="lazy" width="600" height="450">{% endif %}
+        <span class="strip-label"><span class="extras-icon">{% serviceIcon s.icon %}</span><span>{{ s.short }}</span></span>
+      </a>
+      {%- endfor %}
+    </div>
+    <p class="muted narrow">הזמנה שאני מציירת כולה ביד בצבעי מים, או חבילה שלמה לאירוע בעיצוב גרפי, עם אלמנטים מצוירים קטנים.</p>
+    {%- set homeExtras = services.items | selectattr("home") %}
+    {%- if homeExtras.length %}
+    <p class="small narrow extras-more">ועוד: {% for s in homeExtras %}<a href="services.html#s-{{ s.icon }}">{{ s.short }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+    {%- endif %}
+    <div class="actions"><a class="btn btn-outline" href="services.html">לכל הפרטים <span aria-hidden="true">←</span></a></div>
+  </div>
+</section>
+
+<section class="section section-white">
+  <div class="wrap stack">
+    <h2>למה הזמנה מאוירת</h2>
+    <div class="why">
+      <div><strong>מצוירת ביד, ולא חוזרת על עצמה</strong><p class="muted">כל קו וכל כתם צבע נעשים על נייר אמיתי. כל ציור נוצר פעם אחת, בשבילכם, ולא יופיע אצל זוג אחר.</p></div>
+      <div><strong>מותאמת אליכם</strong><p class="muted">הפרח שאהבתם, העץ מהחצר של סבתא, הציפורים מהטיול הראשון. כל פרט יכול להיכנס לציור.</p></div>
+      <div><strong>לכל אירוע</strong><p class="muted">חתונה, חינה, ברית, בר ובת מצווה, ימי הולדת, וכל שמחה אחרת.</p></div>
+    </div>
+  </div>
+</section>
+
+{% include "names-preview.njk" %}
+
+{#- הבלוק מוצג רק כשיש צילום סקיצה או סרטון אמיתי מהשולחן #}
+{%- if site.studio.sketch or site.studio.video %}
+<section class="section section-beige">
+  <div class="wrap stack">
+    {% brushLine %}
+    <h2>על הנייר, לא במחשב</h2>
+    <p class="muted narrow">ככה זה נראה אצלי על השולחן, מהסקיצה בעיפרון ועד הציור הגמור.</p>
+    {%- if site.studio.sketch %}
+    <figure class="compare" style="--pos: 50%">
+      <img src="{{ site.studio.sketchFinished or 'assets/img/gallery/hummingbirds-invitation.webp' }}" alt="הציור הגמור בצבעי מים" loading="lazy" width="600" height="750">
+      <img class="compare-top" src="{{ site.studio.sketch }}" alt="{{ site.studio.sketchAlt }}" loading="lazy" width="600" height="750">
+      <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="להזיז בין הסקיצה לציור הגמור">
+      <figcaption>מזיזים את הקו: סקיצה מצד אחד, ציור גמור מהצד השני</figcaption>
+    </figure>
+    {%- endif %}
+    {%- if site.studio.video %}
+    <figure><video class="studio-video" src="{{ site.studio.video }}" autoplay muted loop playsinline aria-label="המכחול על הנייר"></video><figcaption>המכחול על הנייר</figcaption></figure>
+    {%- endif %}
+  </div>
+</section>
+{%- endif %}
+
+<section class="section">
+  <div class="wrap stack">
+    <h2>איך זה עובד</h2>
+    <ol class="steps row">
+      <li><span class="step-num">1</span><div><strong>מכירים</strong><p>כותבים לי, ומדברים על האירוע, התאריך ומה שאתם אוהבים.</p></div></li>
+      <li><span class="step-num">2</span><div><strong>סקיצה</strong><p>אני מציירת סקיצה ראשונה ושולחת לכם.</p></div></li>
+      <li><span class="step-num">3</span><div><strong>מדייקים יחד</strong><p>משנים צבע, מזיזים פרח, עד שזה בדיוק אתם.</p></div></li>
+      <li><span class="step-num">4</span><div><strong>ההזמנה מוכנה</strong><p>תמונה לשליחה בוואטסאפ וקובץ PDF מוכן להדפסה.</p></div></li>
+    </ol>
+    <a class="text-link" href="how-it-works.html">איך זה עובד, בפירוט</a>
+  </div>
+</section>
+
+{% include "guide-cta.njk" %}
+
+<section class="section section-beige">
+  <div class="wrap stack center">
+    {%- if site.studio.portrait %}
+    <img class="arch portrait" src="{{ site.studio.portrait }}" alt="{{ site.studio.portraitAlt }}" loading="lazy" width="200" height="244">
+    {%- else %}
+    <div class="portrait portrait-slot"><img src="assets/img/logo.webp" alt="" width="120" height="115" loading="lazy" style="width: 120px"></div>
+    {%- endif %}
+    <p class="hand">נעים מאוד</p>
+    <h2>אני מוריה</h2>
+    <p class="muted narrow">יש משהו בצבעי מים שאי אפשר לשלוט בו עד הסוף: הצבע זורם, נמזג, מפתיע. בגלל זה כל ציור יוצא קצת אחר, וזה בדיוק מה שאני אוהבת בו.</p>
+    <p class="muted narrow">אני גם מעצבת גרפית, אז גם את האיור וגם את עיצוב ההזמנה סביבו אני עושה בעצמי.</p>
+    <img class="moria-sign" src="assets/img/moriart.webp" alt="MoriArt, החתימה של מוריה" width="600" height="259" loading="lazy">
+    <a class="text-link" href="about.html">עוד עליי</a>
+  </div>
+</section>
+
+<section class="section cta-wash">
+  <div class="wrap stack center narrow">
+    <img src="assets/img/gallery/wildflowers-mayim-rabim-600.webp" alt="" loading="lazy" width="600" height="300" style="width: 100%; aspect-ratio: 2 / 1; object-fit: cover; object-position: center 20%; border-radius: 6px">
+    <h2>יש לכם תאריך?</h2>
+    <p class="muted">ספרו לי עליו, ונתחיל לצייר.</p>
+    <div class="actions" style="width: 100%; justify-content: center">
+      <a class="btn btn-primary" href="{{ waLink }}">{% waIcon 20 %} לשלוח הודעה בוואטסאפ</a>
+      <a class="btn btn-outline" href="contact.html">להשאיר פרטים בטופס</a>
+    </div>
+  </div>
+</section>

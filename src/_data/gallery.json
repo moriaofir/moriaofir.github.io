@@ -1,0 +1,79 @@
+{
+  "categories": [
+    "חתונות"
+  ],
+  "items": [
+    {
+      "image": "assets/img/gallery/bluebirds-mockup.webp",
+      "alt": "ההזמנה של גיתית ונועם, שני הצדדים: ציפורים כחולות על ענף, וצד הטקסט עם השמות",
+      "caption": "גיתית ונועם: הציפורים הכחולות, עם צד הטקסט והשמות",
+      "category": "חתונות",
+      "home": true,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/gallery/gitit-noam-shot-glasses.webp",
+      "alt": "כוסיות שוטים עם הציפורים הכחולות מההזמנה של גיתית ונועם והשמות שלהם, על בר עץ",
+      "caption": "הציפורים של גיתית ונועם, גם על הכוסיות באירוע",
+      "category": "חתונות",
+      "home": false,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/gallery/blue-flowers-wreath-mockup.webp",
+      "alt": "ההזמנה של חגי והדר עם זר פרחים כחולים, שני הצדדים",
+      "caption": "חגי והדר: זר פרחים כחולים שעוטף את הפסוק",
+      "category": "חתונות",
+      "home": true,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/gallery/hummingbirds-invitation.webp",
+      "alt": "הזמנה עם זוג יונקי דבש צבעוניים",
+      "caption": "ההזמנה הראשונה שציירתי: החתונה שלנו",
+      "category": "חתונות",
+      "home": true,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/gallery/bluebirds-invitation.webp",
+      "alt": "הזמנה לחתונה עם שתי ציפורים כחולות על ענף, בצבעי מים",
+      "caption": "ציפורים כחולות על ענף, לזוג שאוהב את הבוקר",
+      "category": "חתונות",
+      "home": true,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/gallery/wildflowers-mayim-rabim.webp",
+      "alt": "הזמנה עם פרחי בר בצבעי מים והפסוק מים רבים",
+      "caption": "פרחי בר, ו״מים רבים לא יוכלו לכבות את האהבה״",
+      "category": "חתונות",
+      "home": false,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/gallery/yellow-bird-invitation.webp",
+      "alt": "הזמנה לחתונה עם ציפור צהובה קטנה על ענף",
+      "caption": "ציפור צהובה קטנה, עדינה ושמחה",
+      "category": "חתונות",
+      "home": false,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/gallery/olive-tree-mockup.webp",
+      "alt": "הזמנה לחתונה עם עץ זית וזוג ציפורים",
+      "caption": "עץ זית, שורשים ובית",
+      "category": "חתונות",
+      "home": false,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/gallery/white-flower-invitation.webp",
+      "alt": "הזמנה לחתונה עם פרח לבן גדול בפינה",
+      "caption": "פרח לבן אחד, הרבה אוויר",
+      "category": "חתונות",
+      "home": false,
+      "carousel": false
+    }
+  ]
+}

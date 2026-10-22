@@ -1,0 +1,47 @@
+# האתר של מוריה אופיר, הזמנות מאוירות
+
+אתר סטטי (Eleventy), בעברית ומימין לשמאל, לפי `site/design/design-direction.md` והטקסטים ב־`site/content/site-copy.md`.
+
+## מבנה
+- `src/*.njk` – העמודים: בית, גלריה, איך זה עובד, אודות, מחירים, צרו קשר
+- `src/_data/gallery.json` – העבודות בגלריה (המקוריים בלי טשטוש, הזוגות הסכימו. `carousel: false` מסתיר עבודה מהקרוסלה בדף הבית)
+- `src/_data/testimonials.json` – המלצות. כשהרשימה ריקה, הבלוק לא מוצג
+- `src/_data/site.json` – פרטי קשר, הודעת וואטסאפ, ותמונות סטודיו
+- `.pages.yml` – ממשק עריכה בלי קוד (Pages CMS)
+
+## מקומות שמחכים לתמונות
+ב־`site.json` תחת `studio`:
+- `sketch` – צילום סקיצה. עד שיש, מוצג במקומה ציור פרחי הבר
+- `video` – סרטון קצר של המכחול. עד שיש, לא מוצג
+- `portrait` – תמונה של מוריה. עד שיש, מוצג הלוגו במסגרת הקשת
+
+מעלים דרך ממשק העריכה, והאתר מתעדכן לבד.
+
+## הרצה מקומית
+```
+npm install
+npm run build     # התוצאה ב־_site
+npm start         # תצוגה מקומית
+```
+
+## העלאה לאוויר (GitHub Pages, חינם)
+1. מאגר GitHub ריק בשם `moria-site` בחשבון shiloofir1997-debug.
+2. מעלים אליו את התיקייה הזו. בכל דחיפה ל־`main`, הקובץ `.github/workflows/deploy.yml` בונה ומעלה את האתר.
+3. ב־Settings → Pages במאגר: Source = GitHub Actions.
+4. הכתובת: https://shiloofir1997-debug.github.io/moria-site
+5. כשיהיה דומיין: Settings → Pages → Custom domain, ולעדכן `url` ב־`site.json`.
+
+## עריכה בלי קוד
+נכנסים ל־https://app.pagescms.org עם חשבון GitHub, בוחרים את המאגר, ועורכים גלריה, המלצות ופרטים. כל שמירה מעדכנת את האתר תוך דקה־שתיים.
+
+## הצעות מחיר (מחולל פנימי למוריה)
+- הכתובת: `studio-<listKey>.html` (listKey ב־`src/_data/priceList.json`). לא מקושר מהאתר, עם noindex, ונכנסים עם קוד (`pin`).
+- מוריה ממלאת לקוח, מוצרים (כמות ומחיר), הנחה ומקדמה, ומקבלת מסמך הצעת מחיר מלא. "שליחה בוואטסאפ" משתף קובץ PDF, ו"שמירה כ-PDF" מוריד אותו.
+- ההצעות נשמרות רק במכשיר (localStorage). יש כפתור גיבוי ושחזור.
+- המחירון, פרטי העסק, התנאים והקוד: בממשק העריכה, "הצעות מחיר (מחירון ופרטי העסק)".
+- קבצים: `quote-builder.njk`, `assets/js/quote-builder.js`, `assets/css/quote-builder.css`. ה-PDF נוצר בדפדפן עם html2canvas ו-jsPDF (שמורים ב-assets/js/vendor).
+
+## המדריך לזוגות
+- `src/guide.njk` → `guide.html`: "המדריך הקטן להזמנה". לא בתפריט, לא במפת האתר ו־noindex. מוריה שולחת את הקישור בוואטסאפ למי שלחץ "לקבל את המדריך בוואטסאפ".
+- הכפתור: `_includes/guide-cta.njk`, מופיע בדף הבית, באיך זה עובד ובנוסחים. לוח הזמנים במדריך נלקח מ־`timeline.json`.
+- תשובות מוכנות למוריה (כולל תשובה עם הקישור למדריך): https://claude.ai/artifact/F289n1q92ddTwpdyZ2YvGc. כשיהיה דומיין, לעדכן שם את הקישור.

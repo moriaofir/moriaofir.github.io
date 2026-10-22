@@ -1,0 +1,39 @@
+---
+layout: base.njk
+permalink: about.html
+canonical: about.html
+pageKey: about
+title: "על מוריה אופיר, מאיירת בצבעי מים ומעצבת גרפית"
+description: "מי אני, למה צבעי מים, ואיך כל הזמנה נולדת על השולחן שלי."
+---
+<section class="section">
+  <div class="wrap stack center narrow">
+    {%- if site.studio.portrait %}
+    <img class="arch portrait" src="{{ site.studio.portrait }}" alt="{{ site.studio.portraitAlt }}" width="200" height="244">
+    {%- else %}
+    <div class="portrait portrait-slot"><img src="assets/img/logo.webp" alt="" width="120" height="115" style="width: 120px"></div>
+    {%- endif %}
+    <p class="hand">נעים מאוד</p>
+    <h1>אני מוריה</h1>
+  </div>
+  <div class="wrap stack narrow" style="margin-top: 24px">
+    <p>אני מציירת מאז בית הספר היסודי, ועם השנים למדתי טכניקות שונות. לצבעי מים הגעתי לפני כמעט עשור, ומאז לא עזבתי.</p>
+    <p>חוץ מציירת, אני גם מעצבת גרפית. אלה שני חלקים שונים בעבודה, ואת שניהם אני עושה בעצמי:</p>
+    <ul class="two-parts">
+      <li><strong>האיור.</strong> אני מציירת אותו ביד, בצבעי מים, לפי הסיפור שלכם.</li>
+      <li><strong>עיצוב ההזמנה.</strong> אני בוחרת את הגופנים, מסדרת את הטקסט סביב הציור, מאזנת בין הצבעים ומכינה קבצים מוכנים לוואטסאפ ולהדפסה.</li>
+    </ul>
+    <p>ההזמנות התחילו מהחתונה שלנו. ראיתי הזמנה מהממת עם ציפור בצבעי מים, וכשבדקתי כמה זה עולה הבנתי שזה יקר מאוד. אז חשבתי לעצמי שאני יכולה לצייר אותה בעצמי. ההזמנה הראשונה שציירתי הייתה ההזמנה שלנו, ובגלל זה חשוב לי שגם אצלי המחיר יהיה הוגן.</p>
+    <p>יש משהו בצבעי מים שאי אפשר לשלוט בו עד הסוף: הצבע זורם, נמזג, מפתיע. בגלל זה כל ציור יוצא קצת אחר, וזה בדיוק מה שאני אוהבת בו.</p>
+    <p>הכי משמח אותי לשמוע סיפור של זוג או של משפחה ולהפוך אותו לציור קטן שכולם יקבלו הביתה.</p>
+    <p>אני מציירת לזוגות ולמשפחות מכל הארץ. כל הזמנה עוברת דרך הידיים שלי, מהסקיצה הראשונה ועד הקובץ הסופי.</p>
+    <img class="moria-sign" src="assets/img/moriart.webp" alt="MoriArt, החתימה של מוריה" width="600" height="259" loading="lazy">
+  </div>
+</section>
+
+<section class="section cta-wash">
+  <div class="wrap stack center">
+    <p>אשמח להכיר גם אתכם.</p>
+    <a class="btn btn-primary" href="{{ site.whatsappDefault | whatsapp(site.phone) }}">{% waIcon 20 %} לכתוב לי בוואטסאפ</a>
+  </div>
+</section>

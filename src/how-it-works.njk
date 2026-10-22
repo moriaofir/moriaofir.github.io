@@ -1,0 +1,74 @@
+---
+layout: base.njk
+permalink: how-it-works.html
+canonical: how-it-works.html
+pageKey: how
+faqSchema: true
+title: "איך מזמינים הזמנה מאוירת? שלב אחר שלב · מוריה אופיר"
+description: "משיחת היכרות, דרך סקיצה ותיקונים ועד הזמנה מוכנה לשליחה. ככה זה עובד."
+whatsappMessage: "היי מוריה, קראתי איך זה עובד ואשמח להתחיל"
+---
+<section class="section">
+  <div class="wrap stack narrow">
+    <h1>מהשיחה הראשונה ועד ההזמנה ביד</h1>
+    <p class="muted">התהליך פשוט, ואני איתכם בכל שלב. אתם לא צריכים לדעת מראש מה אתם רוצים. בשביל זה אני כאן.</p>
+    <ol class="steps" style="margin-top: 16px">
+      <li><span class="step-num">1</span><div><strong>מכירים</strong><p>אתם כותבים לי בוואטסאפ או בטופס, ואנחנו מדברים קצת: על האירוע, על התאריך, על מה שאתם אוהבים. אפשר לשלוח תמונות, צבעים, מקום, כל מה שעולה לכם בראש. כל הודעה מגיעה ישר אליי, ואני זו שעונה לכם.</p></div></li>
+      <li><span class="step-num">2</span><div><strong>סקיצה</strong><p>אני מציירת סקיצה ראשונה ושולחת לכם. זה הרגע שבו רואים את הרעיון מקבל צורה.</p></div></li>
+      <li><span class="step-num">3</span><div><strong>מדייקים יחד</strong><p>משנים צבע, מזיזים פרח, מתקנים ניסוח. התיקונים כלולים במחיר.</p></div></li>
+      <li><span class="step-num">4</span><div><strong>בדיקה כפולה</strong><p>לפני שהקובץ הסופי יוצא, אני שולחת לכם רשימה קצרה לאישור: השמות, התאריך העברי והלועזי, השעות, שם המקום והכתובת. רק אחרי שאישרתם כל שורה, ההזמנה יוצאת. ככה טעות קטנה לא מגיעה לאורחים.</p></div></li>
+      <li><span class="step-num">5</span><div><strong>ההזמנה מוכנה</strong><p>מקבלים תמונה לשליחה בוואטסאפ וקובץ PDF מוכן להדפסה, ומדפיסים איפה שנוח לכם.</p></div></li>
+      <li><span class="step-num">6</span><div><strong>והציור ממשיך</strong><p>מי שרוצה, יכול לקבל את ההזמנה המקורית ממוסגרת, במשלוח עד הבית. <a href="services.html">מה עוד אפשר להזמין</a></p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section-beige" id="when">
+  <div class="wrap stack narrow">
+    <h2>מתי כדאי להתחיל?</h2>
+    <p class="muted">כתבו את תאריך האירוע, ותקבלו לוח זמנים: עד מתי לפנות אליי, ומתי לשלוח כל דבר לאורחים.</p>
+    <form class="planner" data-plan='{{ timeline.steps | dump }}' onsubmit="return false">
+      <div class="field"><label for="p-date">תאריך האירוע</label><input id="p-date" type="date" required></div>
+    </form>
+    <ol class="plan-out" aria-live="polite" hidden></ol>
+    <p class="small">{{ timeline.note }}</p>
+  </div>
+</section>
+
+{% include "guide-cta.njk" %}
+
+<section class="section section-white">
+  <div class="wrap stack faq-wrap">
+    <h2>שאלות שחוזרות על עצמן</h2>
+    <p class="faq-hint">לוחצים על שאלה, והתשובה נפתחת.</p>
+    {#- השאלות מקובצות לפי נושא. שאלה בלי נושא, או עם נושא שלא ברשימה, מופיעה בסוף -#}
+    {%- set known = faq.topics or [] %}
+    {%- for topic in known %}
+    {%- set qs = faq.items | byTopic(topic) %}
+    {%- if qs.length %}
+    <h3 class="faq-topic">{{ topic }}</h3>
+    <div class="faq">
+      {%- for q in qs %}
+      <details><summary>{{ q.question }}</summary><p>{{ q.answer }}</p></details>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+    {%- endfor %}
+    {%- set rest = faq.items | withoutTopics(known) %}
+    {%- if rest.length %}
+    <h3 class="faq-topic">ועוד</h3>
+    <div class="faq">
+      {%- for q in rest %}
+      <details><summary>{{ q.question }}</summary><p>{{ q.answer }}</p></details>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</section>
+
+<section class="section cta-wash">
+  <div class="wrap stack center">
+    <a class="btn btn-primary" href="{{ whatsappMessage | whatsapp(site.phone) }}">{% waIcon 20 %} בואו נתחיל</a>
+  </div>
+</section>
+<script src="assets/js/planner.js" defer></script>

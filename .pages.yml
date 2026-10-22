@@ -1,0 +1,243 @@
+# ממשק עריכה (Pages CMS, https://app.pagescms.org): נכנסים עם חשבון GitHub ועורכים בלי קוד
+media:
+  input: src/assets/img/uploads
+  output: assets/img/uploads
+  extensions: [jpg, jpeg, png, webp, mp4]
+
+content:
+  - name: gallery
+    label: גלריה
+    type: file
+    path: src/_data/gallery.json
+    format: json
+    fields:
+      - name: categories
+        label: סוגי אירועים לסינון (מעל הגלריה)
+        type: string
+        list: true
+      - name: items
+        label: עבודות
+        type: object
+        list: true
+        fields:
+          - { name: image, label: תמונה, type: image, required: true }
+          - { name: caption, label: כיתוב קצר, type: string, required: true }
+          - { name: alt, label: תיאור התמונה (לעיוורים ולגוגל), type: string, required: true }
+          - { name: category, label: סוג אירוע, type: string, required: true }
+          - { name: home, label: להציג בדף הבית, type: boolean }
+          - { name: carousel, label: להציג בקרוסלה בדף הבית (הסדר כאן הוא הסדר בקרוסלה), type: boolean, default: true }
+          - { name: sketch, label: צילום הסקיצה של העבודה הזו (רשות), type: image }
+          - { name: video, label: סרטון קצר של המכחול על העבודה הזו, נפתח בלחיצה ארוכה (רשות, mp4 עד 3MB), type: file }
+
+  - name: testimonials
+    label: המלצות
+    type: file
+    path: src/_data/testimonials.json
+    format: json
+    fields:
+      - name: items
+        label: המלצות
+        type: object
+        list: true
+        fields:
+          - { name: quote, label: הציטוט, type: text, required: true }
+          - { name: highlight, label: משפט אחד בולט מתוך ההמלצה (רשות; מוצג גדול מעל הצילום), type: string }
+          - { name: image, label: צילום מסך של ההודעה (רשות; אם יש, מוצג במקום הטקסט), type: image }
+          - { name: names, label: שמות, type: string, required: true }
+          - { name: event, label: סוג האירוע, type: string }
+          - { name: date, label: חודש ושנה, type: string }
+          - { name: source, label: קישור לביקורת המקורית (מתחתנים / גוגל), type: string }
+
+  - name: faq
+    label: שאלות נפוצות
+    type: file
+    path: src/_data/faq.json
+    format: json
+    fields:
+      - name: topics
+        label: נושאים (הסדר שבו הם מוצגים)
+        type: string
+        list: true
+      - name: items
+        label: שאלות
+        type: object
+        list: true
+        fields:
+          - { name: question, label: שאלה, type: string, required: true }
+          - { name: answer, label: תשובה, type: text, required: true }
+          - { name: topic, label: נושא (אחד מהנושאים למעלה), type: string }
+
+  - name: site
+    label: פרטי קשר ותמונות סטודיו
+    type: file
+    path: src/_data/site.json
+    format: json
+    fields:
+      - { name: phone, label: וואטסאפ (בפורמט 9725XXXXXXXX), type: string }
+      - { name: phoneDisplay, label: טלפון לתצוגה, type: string }
+      - { name: email, label: מייל, type: string }
+      - { name: instagram, label: קישור לאינסטגרם (ריק = לא מוצג), type: string }
+      - { name: area, label: אזור שירות, type: string }
+      - { name: whatsappDefault, label: הודעת וואטסאפ מוכנה, type: string }
+      - { name: priceFrom, label: "שורת מחיר בעמוד המחירים, למשל: הזמנות החל מ־500 ₪ (ריק = לא מוצג)", type: string }
+      - { name: analytics, label: שם החשבון ב־GoatCounter לסטטיסטיקה (ריק = כבוי), type: string }
+      - { name: quoteNote, label: "משפט על הצעת מחיר אחרי שיחה (דף הבית, מחירים, יצירת קשר)", type: text }
+      - { name: replyTime, label: "זמן מענה בעמוד יצירת קשר, למשל: בדרך כלל באותו יום (ריק = לא מוצג)", type: string }
+      - name: reviews
+        label: ביקורות באתר חיצוני (מוצג מ־5 ביקורות)
+        type: object
+        fields:
+          - { name: count, label: מספר ביקורות, type: number }
+          - { name: platform, label: איפה (למשל מתחתנים), type: string }
+          - { name: url, label: קישור לעמוד הביקורות, type: string }
+      - name: studio
+        label: תמונות מהסטודיו
+        type: object
+        fields:
+          - { name: sketch, label: צילום סקיצה בעיפרון, type: image }
+          - { name: sketchAlt, label: תיאור הסקיצה, type: string }
+          - { name: sketchFinished, label: הציור הגמור של אותה סקיצה (להשוואה לפני ואחרי), type: image }
+          - { name: video, label: סרטון קצר של המכחול (mp4, בלי קול), type: file }
+          - { name: portrait, label: תמונה של מוריה, type: image }
+          - { name: portraitAlt, label: תיאור התמונה של מוריה, type: string }
+      - { name: name, label: שם העסק, type: string }
+      - { name: tagline, label: שורת משנה, type: string }
+      - { name: url, label: כתובת האתר, type: string }
+  - name: services
+    label: מה אפשר להזמין (המוצרים)
+    type: file
+    path: src/_data/services.json
+    format: json
+    fields:
+      - { name: intro, label: פתיח בראש העמוד, type: text }
+      - { name: timing, label: משפט על זמני הכנה, type: text }
+      - name: products
+        label: המוצרים הראשיים (הזמנה מצוירת ביד, חבילה בעיצוב גרפי)
+        type: object
+        list: true
+        fields:
+          - { name: title, label: כותרת, type: string, required: true }
+          - { name: short, label: שם קצר (לדף הבית ולטופס), type: string, required: true }
+          - { name: text, label: הסבר, type: text, required: true }
+          - { name: products, label: מה כלול (רשימה), type: string, list: true }
+          - { name: ideas, label: שורה קטנה מתחת (רשות), type: string }
+          - { name: image, label: תמונה, type: image }
+          - { name: alt, label: תיאור התמונה, type: string }
+          - { name: button, label: טקסט הכפתור, type: string }
+          - { name: whatsappMessage, label: הודעת וואטסאפ מוכנה, type: string }
+          - { name: icon, label: "אייקון (brush, layout, frame, house, gift, envelope)", type: string }
+          - { name: home, label: להציג ברצועה בדף הבית, type: boolean }
+      - { name: extrasTitle, label: כותרת לשאר הדברים, type: string }
+      - name: items
+        label: עוד דברים שאפשר להזמין
+        type: object
+        list: true
+        fields:
+          - { name: title, label: כותרת, type: string, required: true }
+          - { name: short, label: שם קצר (לדף הבית ולטופס), type: string, required: true }
+          - { name: text, label: הסבר, type: text, required: true }
+          - { name: products, label: מה כלול (רשימה), type: string, list: true }
+          - { name: ideas, label: שורה קטנה מתחת (רשות), type: string }
+          - { name: image, label: תמונה, type: image }
+          - { name: alt, label: תיאור התמונה, type: string }
+          - { name: button, label: טקסט הכפתור, type: string }
+          - { name: whatsappMessage, label: הודעת וואטסאפ מוכנה, type: string }
+          - { name: icon, label: "אייקון (brush, layout, frame, house, gift, envelope)", type: string }
+          - { name: home, label: להציג ברצועה בדף הבית, type: boolean }
+
+  - name: timeline
+    label: מחשבון מתי להתחיל
+    type: file
+    path: src/_data/timeline.json
+    format: json
+    fields:
+      - { name: note, label: הערה מתחת למחשבון, type: text }
+      - name: steps
+        label: שלבים
+        type: object
+        list: true
+        fields:
+          - { name: weeks, label: כמה שבועות לפני האירוע, type: number }
+          - { name: text, label: מה עושים, type: string }
+
+  - name: wording
+    label: נוסחים לדוגמה
+    type: file
+    path: src/_data/wording.json
+    format: json
+    fields:
+      - name: groups
+        label: סוגי אירועים
+        type: object
+        list: true
+        fields:
+          - { name: title, label: סוג האירוע, type: string }
+          - name: items
+            label: נוסחים
+            type: object
+            list: true
+            fields:
+              - { name: name, label: שם הנוסח, type: string }
+              - { name: text, label: הנוסח, type: text }
+
+  - name: coupon
+    label: קופון הנחה
+    type: file
+    path: src/_data/coupon.json
+    format: json
+    fields:
+      - { name: enabled, label: להציג את הקופון באתר, type: boolean }
+      - { name: code, label: קוד הקופון, type: string, required: true }
+      - { name: text, label: טקסט בפס העליון (לפני הקוד), type: string }
+      - { name: shortText, label: טקסט קצר לטלפון (לפני הקוד), type: string }
+      - { name: terms, label: תנאים, type: string }
+      - { name: whatsappLine, label: שורה שנוספת להודעת הוואטסאפ, type: string }
+      - { name: textEn, label: טקסט בפס בעמוד האנגלי (לפני הקוד), type: string }
+      - { name: termsEn, label: תנאים באנגלית, type: string }
+      - { name: whatsappLineEn, label: שורה לוואטסאפ מהעמוד האנגלי, type: string }
+
+  - name: priceList
+    label: הצעות מחיר (מחירון ופרטי העסק)
+    type: file
+    path: src/_data/priceList.json
+    format: json
+    fields:
+      - name: base
+        label: המוצר הראשי (נכנס לכל הצעה חדשה)
+        type: object
+        fields:
+          - { name: name, label: שם, type: string }
+          - { name: desc, label: פירוט, type: text }
+          - { name: price, label: מחיר רגיל, type: number }
+      - name: extras
+        label: עוד מוצרים לבחירה
+        type: object
+        list: true
+        fields:
+          - { name: name, label: שם, type: string, required: true }
+          - { name: desc, label: פירוט, type: string }
+          - { name: price, label: מחיר רגיל, type: number, required: true }
+      - name: business
+        label: פרטי העסק בראש ההצעה
+        type: object
+        fields:
+          - { name: idLabel, label: "כיתוב (למשל: עוסק פטור מס')", type: string }
+          - { name: idNumber, label: מספר העוסק, type: string }
+          - { name: address, label: "כתובת (ריק = לא מוצג)", type: string }
+      - { name: depositPercent, label: מקדמה באחוזים, type: number }
+      - { name: validDays, label: כמה ימים ההצעה בתוקף, type: number }
+      - { name: turnaround, label: זמן עבודה, type: string }
+      - { name: revisions, label: "תיקונים (בלי מספר סבבים)", type: string }
+      - { name: paymentTerms, label: "תנאי תשלום (ריק = לא מוצג)", type: text }
+      - { name: cancellation, label: "תנאי ביטול (ריק = לא מוצג)", type: text }
+      - { name: vatNote, label: שורת מע"מ, type: string }
+      - { name: thanks, label: משפט תודה בסוף ההצעה, type: string }
+      - name: payment
+        label: אמצעי תשלום (ריק = לא מוצג)
+        type: object
+        fields:
+          - { name: bit, label: מספר לביט, type: string }
+          - { name: paybox, label: קישור לפייבוקס, type: string }
+          - { name: bank, label: "העברה בנקאית (בנק, סניף, חשבון, שם)", type: text }
+      - { name: pin, label: קוד הכניסה למחולל ההצעות, type: string }
+      - { name: listKey, label: "קוד בכתובת של המחולל (שינוי שלו משנה את הקישור!)", type: string }

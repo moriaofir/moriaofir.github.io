@@ -1,0 +1,24 @@
+{#- כפתור נגישות בצד המסך ותפריט ההתאמות. נטען מ־base.njk. הקוד ב־assets/js/a11y.js והעיצוב ב־assets/css/a11y.css -#}
+<button class="a11y-btn" id="a11y-btn" type="button" aria-label="תפריט נגישות" aria-expanded="false" aria-controls="a11y-panel">{% a11yIcon 28 %}</button>
+<div class="a11y-panel" id="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11y-title" hidden>
+  <div class="a11y-head">
+    <h2 id="a11y-title">נגישות</h2>
+    <button class="a11y-close" type="button" aria-label="סגירת תפריט הנגישות">×</button>
+  </div>
+  <div class="a11y-size" role="group" aria-label="גודל הטקסט">
+    <span>גודל טקסט</span>
+    <button type="button" data-size="-1" aria-label="הקטנת הטקסט">א-</button>
+    <output id="a11y-size-out" aria-live="polite">רגיל</output>
+    <button type="button" data-size="1" aria-label="הגדלת הטקסט">א+</button>
+  </div>
+  <div class="a11y-options">
+    <button type="button" data-a11y="contrast" aria-pressed="false">ניגודיות גבוהה</button>
+    <button type="button" data-a11y="links" aria-pressed="false">הדגשת קישורים</button>
+    <button type="button" data-a11y="font" aria-pressed="false">גופן קריא</button>
+    <button type="button" data-a11y="spacing" aria-pressed="false">ריווח בין שורות</button>
+    <button type="button" data-a11y="still" aria-pressed="false">עצירת אנימציות</button>
+    <button type="button" data-a11y="cursor" aria-pressed="false">סמן עכבר גדול</button>
+  </div>
+  <button class="a11y-reset" type="button">איפוס ההגדרות</button>
+  <a class="a11y-link" href="accessibility.html">הצהרת נגישות</a>
+</div>

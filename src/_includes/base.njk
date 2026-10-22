@@ -1,0 +1,156 @@
+{%- set waMessage = whatsappMessage or site.whatsappDefault -%}
+{%- set waLink = waMessage | whatsapp(site.phone) -%}
+{%- set nav = [
+  { url: "index.html", key: "home", label: "בית" },
+  { url: "gallery.html", key: "gallery", label: "גלריה" },
+  { url: "reviews.html", key: "reviews", label: "המלצות" },
+  { url: "how-it-works.html", key: "how", label: "איך זה עובד" },
+  { url: "services.html", key: "services", label: "מה אפשר להזמין" },
+  { url: "about.html", key: "about", label: "אודות" },
+  { url: "prices.html", key: "prices", label: "מחירים" },
+  { url: "contact.html", key: "contact", label: "צרו קשר" }
+] -%}
+<!doctype html>
+<html lang="{{ lang or 'he' }}" dir="{{ 'ltr' if lang == 'en' else 'rtl' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ site.url }}/{{ canonical or '' }}">
+  <meta property="og:url" content="{{ site.url }}/{{ canonical or '' }}">
+  {%- if noindex %}
+  <meta name="robots" content="noindex">
+  {%- endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:site_name" content="{{ site.name }}, {{ site.tagline }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="{{ site.url }}/assets/img/og.jpg">
+  <meta name="theme-color" content="#FAF6EE">
+  <link rel="icon" type="image/png" href="assets/img/icon-512.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/assistant-hebrew-27533b.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/bellefair-hebrew-f2ef74.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/extras.css">
+  <link rel="stylesheet" href="assets/css/effects.css">
+  <link rel="stylesheet" href="assets/css/a11y.css">
+  <script>
+    // הגדרות הנגישות שהמבקר בחר, מוחלות לפני שהעמוד מוצג כדי שלא יקפוץ
+    (function () {
+      try {
+        var s = JSON.parse(localStorage.getItem("a11y")) || {}, c = document.documentElement.classList;
+        if (s.size) c.add("a11y-size-" + s.size);
+        ["contrast", "links", "font", "spacing", "still", "cursor"].forEach(function (k) { if (s[k]) c.add("a11y-" + k); });
+      } catch (e) {}
+    })();
+  </script>
+  {%- if pageKey == "home" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "{{ site.name }} – {{ site.tagline }}",
+    "description": "הזמנות מאוירות בצבעי מים, מצוירות ביד, לחתונה ולכל אירוע",
+    "url": "{{ site.url }}/",
+    "image": "{{ site.url }}/assets/img/og.jpg",
+    "logo": "{{ site.url }}/assets/img/icon-512.png",
+    "telephone": "+{{ site.phone }}",
+    "email": "{{ site.email }}",
+    "areaServed": { "@type": "Country", "name": "ישראל" },
+    "priceRange": "החל מ־500 ₪"
+  }
+  </script>
+  {%- endif %}
+  {%- if faqSchema %}
+  <script type="application/ld+json">{{ faq.items | faqSchema | safe }}</script>
+  {%- endif %}
+  {%- if site.analytics %}
+  <script>
+    // סטטיסטיקה (GoatCounter, בלי עוגיות): סופר רק באתר החי, לא בתצוגה המקדימה
+    if (location.hostname === new URL("{{ site.url }}").hostname) {
+      var gc = document.createElement("script");
+      gc.async = true;
+      gc.src = "https://gc.zgo.at/count.js";
+      gc.dataset.goatcounter = "https://{{ site.analytics }}.goatcounter.com/count";
+      document.head.appendChild(gc);
+    }
+  </script>
+  {%- endif %}
+</head>
+<body data-page="{{ pageKey }}">
+  <a class="skip" href="#main">דילוג לתוכן</a>
+  {% include "extras-top.njk" %}
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo-small.png" alt="" width="42" height="40">
+        <span class="brand-name"><strong>{{ site.name }}</strong><span>{{ site.tagline }}</span></span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="nav">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 7L20 7M4 12L20 12M8 17L20 17"/></svg>
+      </button>
+      <nav class="nav" id="nav" aria-label="ראשי">
+        <ul>
+          {%- for item in nav %}
+          <li><a href="{{ item.url }}"{% if item.key == pageKey %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {%- endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {{ content | safe }}
+  </main>
+
+  {#- הקריאה לפעולה בסוף כל עמוד נמצאת בעמוד עצמו (מקטע cta-wash), כדי שלא יהיו שתיים ברצף #}
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <img src="assets/img/logo.webp" alt="{{ site.name }}, {{ site.tagline }}" width="96" height="92" loading="lazy">
+        <p>{{ site.name }} · הזמנות מאוירות בעבודת יד</p>
+        <p>{{ site.area }}</p>
+        <img class="footer-sign" src="assets/img/moriart.webp" alt="" width="600" height="259" loading="lazy">
+      </div>
+      <nav class="footer-col" aria-label="עמודים">
+        <h2 class="footer-title">באתר</h2>
+        <ul>
+          {%- for item in nav %}{% if item.key != "home" %}
+          <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+          {%- endif %}{% endfor %}
+          <li><a href="wording.html">נוסחים להזמנה</a></li>
+          <li><a href="how-it-works.html#when">מתי להתחיל</a></li>
+          <li><a href="en.html" lang="en">English</a></li>
+        </ul>
+      </nav>
+      <div class="footer-col">
+        <h2 class="footer-title">לדבר איתי</h2>
+        <p class="footer-personal">אני עונה בעצמי{% if site.replyTime %}, {{ site.replyTime }}{% endif %}.</p>
+        <ul>
+          <li><a href="{{ waLink }}">וואטסאפ: <span dir="ltr">{{ site.phoneDisplay }}</span></a></li>
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          {%- if site.instagram %}<li><a href="{{ site.instagram }}">אינסטגרם</a></li>{% endif %}
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p><a href="accessibility.html">הצהרת נגישות</a> · <a href="privacy.html">פרטיות</a> · © {{ year }} כל הזכויות שמורות</p>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="{{ waLink }}" aria-label="לכתוב למוריה בוואטסאפ">
+    {% waIcon %}
+    וואטסאפ
+  </a>
+
+  <script src="assets/js/site.js" defer></script>
+  {% include "extras-bottom.njk" %}
+  <script src="assets/js/effects.js" defer></script>
+  {% include "a11y.njk" %}
+  <script src="assets/js/a11y.js" defer></script>
+</body>
+</html>

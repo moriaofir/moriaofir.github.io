@@ -1,0 +1,145 @@
+/* מחולל הצעות המחיר: כלי עבודה לטלפון של מוריה, ומסמך הצעה בעיצוב העסק. צבעים לפי style.css */
+:root {
+  --paper: #FAF6EE;
+  --sheet: #FFFDF8;
+  --teal: #4FA3A5;
+  --teal-deep: #2E6E70;
+  --teal-dark: #1F5254;
+  --sage: #D8E2CF;
+  --blush: #F1DCD5;
+  --ink: #2F3437;
+  --ink-soft: #4A4F52;
+  --brown: #6E5F4E;
+  --line: #E3D6C2;
+  --danger: #9A3B2E;
+  --font-head: "Bellefair", "Frank Ruhl Libre", serif;
+  --font-body: "Assistant", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.55;
+  padding: env(safe-area-inset-top, 0px) max(14px, env(safe-area-inset-right, 0px)) 90px max(14px, env(safe-area-inset-left, 0px));
+}
+h1, h2 { font-family: var(--font-head); font-weight: 400; margin: 0; line-height: 1.2; }
+p { margin: 0; }
+.small { font-size: 14px; color: var(--brown); }
+.muted { color: var(--brown); font-size: 15px; }
+:focus-visible { outline: 2px solid var(--teal-deep); outline-offset: 2px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 50px; border-radius: 999px; padding: 0 22px; font: 600 17px var(--font-body);
+  border: 1px solid var(--teal-deep); cursor: pointer; text-decoration: none;
+}
+.btn-sm { min-height: 40px; padding: 0 16px; font-size: 15px; }
+.btn-main { background: var(--teal-deep); color: #fff; }
+.btn-main:hover { background: var(--teal-dark); }
+.btn-ghost { background: transparent; color: var(--teal-deep); }
+.btn:disabled { opacity: .6; cursor: wait; }
+.link { background: none; border: 0; padding: 4px 0; color: var(--teal-deep); font: 600 15px var(--font-body); cursor: pointer; }
+.danger { color: var(--danger); }
+
+input, select, textarea {
+  width: 100%; font: 400 17px var(--font-body); color: var(--ink); background: #fff;
+  border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; min-height: 46px;
+}
+textarea { min-height: 80px; resize: vertical; }
+label { display: block; font-size: 14px; color: var(--brown); margin: 10px 0 4px; }
+
+/* כניסה */
+.lock { min-height: 100vh; display: grid; place-items: center; }
+.lock-box { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; width: min(340px, 100%); display: grid; gap: 8px; text-align: center; justify-items: center; }
+.lock-box input { text-align: center; letter-spacing: .3em; }
+.lock-box .btn { width: 100%; margin-top: 8px; }
+.err { color: var(--danger); font-size: 14px; min-height: 1.3em; }
+
+/* מבנה */
+.app { max-width: 720px; margin: 0 auto; }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; }
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand strong { font-family: var(--font-head); font-weight: 400; font-size: 1.4rem; }
+
+/* רשימה */
+.list { display: grid; gap: 10px; }
+.item { background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; }
+.item-main { display: grid; gap: 2px; width: 100%; text-align: start; background: none; border: 0; padding: 14px 16px 6px; font: inherit; color: inherit; cursor: pointer; }
+.item-main span { font-size: 14px; color: var(--brown); }
+.item-main .item-total { color: var(--teal-deep); font-weight: 600; font-variant-numeric: tabular-nums; }
+.item-acts { display: flex; gap: 18px; padding: 0 16px 10px; }
+.empty { color: var(--brown); padding: 24px 4px; }
+.backup { margin-top: 28px; border-top: 1px solid var(--line); padding-top: 12px; }
+.backup summary { cursor: pointer; color: var(--teal-deep); font-weight: 600; }
+.backup .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+
+/* טופס */
+fieldset { border: 0; background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 6px 14px 16px; margin: 0 0 14px; min-width: 0; }
+legend { font-family: var(--font-head); font-size: 1.3rem; padding: 0 6px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.two > div { min-width: 0; }
+.sketch-pick { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.sketch-pick img { width: 84px; height: 84px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
+.lines { display: grid; gap: 10px; margin-top: 10px; }
+.line { border: 1px solid var(--line); border-radius: 10px; padding: 10px; display: grid; gap: 8px; background: #fff; }
+.line-head { display: flex; gap: 8px; align-items: center; }
+.line-head input { font-weight: 600; }
+.line-desc { font-size: 15px; min-height: 40px; }
+.line-nums { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: end; }
+.line-nums label { margin: 0; }
+.line-sum { font-weight: 600; font-variant-numeric: tabular-nums; padding-bottom: 12px; white-space: nowrap; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 12px; }
+.chip { background: var(--sage); border: 0; border-radius: 999px; padding: 8px 14px; font: 600 14px var(--font-body); color: var(--ink); cursor: pointer; }
+.sum-bar {
+  position: fixed; inset: auto 0 0 0; background: var(--sheet); border-top: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px max(14px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(14px, env(safe-area-inset-left, 0px));
+}
+.sum-bar strong { font-variant-numeric: tabular-nums; }
+
+/* תצוגת ההצעה */
+.actions { display: grid; gap: 8px; margin-bottom: 14px; }
+.doc-wrap { overflow-x: auto; }
+.doc {
+  background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 6px;
+  padding: 28px 22px; display: grid; gap: 18px; font-size: 15px; min-width: 0;
+}
+.doc.pdf-mode { width: 794px; padding: 40px 48px; border: 0; border-radius: 0; font-size: 15px; }
+.doc-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-bottom: 2px solid var(--teal); padding-bottom: 14px; }
+.doc-brand { display: flex; align-items: center; gap: 10px; }
+.doc-brand strong { display: block; font-family: var(--font-head); font-weight: 400; font-size: 1.5rem; line-height: 1.1; }
+.doc-brand span { font-size: 13px; color: var(--brown); }
+.doc-biz { font-size: 13px; color: var(--brown); text-align: end; line-height: 1.5; }
+.doc-title { display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; }
+.doc-title h1 { font-size: 2rem; }
+.doc-meta { font-size: 13px; color: var(--brown); text-align: end; font-variant-numeric: tabular-nums; }
+.doc-to { background: var(--paper); border-radius: 6px; padding: 10px 14px; line-height: 1.7; }
+.doc-sketch { margin: 0; display: grid; gap: 6px; justify-items: center; }
+.doc-sketch img { max-width: 100%; max-height: 340px; border-radius: 4px; }
+.doc-sketch figcaption { font-size: 13px; color: var(--brown); }
+.doc-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.doc-table th { background: var(--teal-deep); color: #fff; font-weight: 600; font-size: 13px; padding: 8px 6px; text-align: start; }
+.doc-table td { border-bottom: 1px solid var(--line); padding: 8px 6px; vertical-align: top; }
+.doc-table td small { display: block; color: var(--brown); font-size: 12px; }
+.doc-table th:nth-child(1), .doc-table td:nth-child(1) { width: 28px; color: var(--brown); }
+.doc-table td:nth-child(n+3) { white-space: nowrap; }
+.doc-totals { justify-self: end; width: min(320px, 100%); display: grid; gap: 4px; font-variant-numeric: tabular-nums; }
+.doc-totals div { display: flex; justify-content: space-between; gap: 12px; }
+.doc-totals .grand { font-weight: 700; font-size: 1.1rem; border-top: 2px solid var(--teal); padding-top: 6px; margin-top: 4px; }
+.doc-totals .note { font-size: 12px; color: var(--brown); display: block; }
+.doc-terms h2 { font-size: 1.2rem; margin-bottom: 6px; }
+.doc-terms ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 3px; }
+.doc-terms li::before { content: "•"; color: var(--teal); margin-inline-end: 8px; }
+.doc-terms p { margin-top: 8px; }
+.doc-thanks { text-align: center; color: var(--teal-deep); font-family: var(--font-head); font-size: 1.15rem; }
+
+@media (max-width: 420px) {
+  .doc { padding: 20px 14px; font-size: 14px; }
+  .doc-table th, .doc-table td { padding: 6px 4px; }
+}
+@media print {
+  body { background: #fff; padding: 0; }
+  .no-print, .bar, .actions { display: none !important; }
+  .doc { border: 0; padding: 0; }
+  .doc-table tr, .doc-totals { break-inside: avoid; }
+}

@@ -1,0 +1,35 @@
+---
+layout: base.njk
+permalink: prices.html
+canonical: prices.html
+pageKey: prices
+title: "כמה עולה הזמנה מאוירת לחתונה? · מוריה אופיר"
+description: "הזמנות מאוירות החל מ־500 ₪. המחיר נקבע בשיחה איתי, לפי מה שאתם צריכים."
+whatsappMessage: "היי מוריה, אשמח לדבר על הזמנה מאוירת ועל המחיר"
+---
+<section class="section">
+  <div class="wrap stack narrow">
+    <h1>כמה זה עולה?</h1>
+    {%- if site.priceFrom %}
+    <p class="price-from">{{ site.priceFrom }}</p>
+    {%- endif %}
+    <p>כל הזמנה נבנית לפי מה שאתם צריכים: סוג האירוע, כמה פריטים, כמה פרטים בציור. לכן אין לי מחירון קבוע.</p>
+    <p class="personal-note">{{ site.quoteNote }}</p>
+    <p>מה שחשוב לי שתדעו: המחירים הוגנים, ויש גמישות. אם המצב אצלכם כרגע לא פשוט, או שאתם חברים ומשפחה, ספרו לי, וכמעט תמיד נמצא דרך.</p>
+    <h2 style="margin-top: 16px">מה משפיע על המחיר</h2>
+    <ul class="muted" style="margin: 0; padding-inline-start: 22px">
+      <li>הזמנה מצוירת כולה ביד, או חבילה בעיצוב גרפי עם אלמנטים מצוירים</li>
+      <li>כמה פריטים (הזמנה, Save the Date, הזמנה לאירוסין, תפריט, הושבה ועוד)</li>
+      <li>כמה מורכב הציור</li>
+      <li>לוח הזמנים</li>
+      <li>אם רוצים גם את ההזמנה המקורית במסגרת, עד הבית</li>
+    </ul>
+    <p class="muted">על האפשרויות אפשר לקרוא ב<a href="services.html">מה אפשר להזמין</a>.</p>
+  </div>
+</section>
+
+<section class="section cta-wash">
+  <div class="wrap stack center">
+    <a class="btn btn-primary" href="{{ whatsappMessage | whatsapp(site.phone) }}">{% waIcon 20 %} לדבר איתי על המחיר</a>
+  </div>
+</section>

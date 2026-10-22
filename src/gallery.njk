@@ -1,0 +1,65 @@
+---
+layout: base.njk
+permalink: gallery.html
+canonical: gallery.html
+pageKey: gallery
+title: "גלריית הזמנות לחתונה מאוירות בצבעי מים · מוריה אופיר"
+description: "הזמנות בצבעי מים עם פרחים, ציפורים, עץ זית ועוד. כל אחת צוירה ביד לזוג אחר."
+whatsappMessage: "היי מוריה, ראיתי את הגלריה באתר ואשמח לשמוע על הזמנה מאוירת"
+---
+<section class="section">
+  <div class="wrap">
+    <div class="stack" style="margin-bottom: 28px">
+      <h1>העבודות שלי</h1>
+      <p class="muted narrow">כאן אפשר לראות חלק מההזמנות שציירתי. כל אחת נולדה משיחה עם זוג או משפחה, ואף אחת לא תחזור על עצמה בדיוק. אם משהו כאן מדבר אליכם, נוכל לצאת ממנו לכיוון שלכם.</p>
+    </div>
+
+    {%- if gallery.categories.length > 1 %}
+    <div class="filters" role="group" aria-label="סינון לפי סוג אירוע">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">הכול</button>
+      {%- for c in gallery.categories %}
+      <button class="chip" type="button" data-filter="{{ c }}" aria-pressed="false">{{ c }}</button>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+
+    <div class="gallery">
+      {%- for item in gallery.items %}
+      {%- set small = item.image | small %}
+      {%- set dim = item.image | imgSize %}
+      <figure data-category="{{ item.category }}">
+        <button class="zoom" type="button" data-full="{{ item.image }}" data-caption="{{ item.caption }}"{% if item.sketch %} data-sketch="{{ item.sketch }}"{% endif %}{% if item.video %} data-video="{{ item.video }}"{% endif %} aria-label="להגדלה: {{ item.caption }}">
+          <img src="{{ small or item.image }}"{% if small %} srcset="{{ small }} 600w, {{ item.image }} {{ dim.w }}w" sizes="(min-width: 900px) 340px, 50vw"{% endif %} alt="{{ item.alt }}" loading="lazy" width="{{ dim.w }}" height="{{ dim.h }}">
+          {%- if item.sketch %}<img class="zoom-sketch" src="{{ item.sketch }}" alt="" loading="lazy"><span class="badge">מהסקיצה לציור</span>{% endif %}
+        </button>
+        <figcaption>{{ item.caption }}</figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+
+    <p class="muted" style="margin-top: 32px"><em>מציירת גם לחינה, ברית, בר ובת מצווה וכל שמחה אחרת. רוצים לראות דוגמאות? כתבו לי.</em></p>
+    <p class="muted"><em>אהבתם ציור? אפשר לקבל את ההזמנה המקורית במסגרת עד הבית, או חבילה שלמה לאירוע באותו סגנון. <a href="services.html">מה אפשר להזמין</a></em></p>
+  </div>
+</section>
+
+<section class="section cta-wash">
+  <div class="wrap stack center">
+    <h2>אהבתם סגנון?</h2>
+    <a class="btn btn-primary" href="contact.html">ספרו לי על האירוע</a>
+  </div>
+</section>
+
+<dialog class="lightbox" aria-label="תמונה מוגדלת">
+  <button class="close" type="button" aria-label="סגירה">×</button>
+  <div class="lightbox-images">
+    <figure class="lightbox-sketch" hidden><img alt=""><figcaption>הסקיצה</figcaption></figure>
+    <img class="lightbox-main" alt="">
+  </div>
+  <p class="lightbox-caption"></p>
+  <p class="lightbox-want"><a class="btn btn-primary" href="{{ whatsappMessage | whatsapp(site.phone) }}" data-phone="{{ site.phone }}">{% waIcon 20 %} רוצים בסגנון הזה?</a></p>
+  <div class="lightbox-nav">
+    <button class="prev" type="button" dir="ltr" aria-label="העבודה הקודמת">›</button>
+    <span class="lightbox-count" aria-live="polite"></span>
+    <button class="next" type="button" dir="ltr" aria-label="העבודה הבאה">‹</button>
+  </div>
+</dialog>

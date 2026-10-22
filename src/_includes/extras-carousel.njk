@@ -1,0 +1,18 @@
+{#- קרוסלה מתחלפת בדף הבית: העבודות מהגלריה לפי הסדר שם, בלי אלה שסומנו לא להציג בקרוסלה. נטען מ־index.njk -#}
+<div class="carousel" data-interval="4000">
+  <div class="carousel-track" tabindex="0" aria-label="עבודות נבחרות, אפשר להחליק" role="region">
+    {%- for item in gallery.items | inCarousel %}
+    {%- set small = item.image | small %}
+    {%- set dim = item.image | imgSize %}
+    <figure class="carousel-slide" style="--r: {{ (dim.w / dim.h) | round(3) }}">
+      <a href="gallery.html"><img src="{{ small or item.image }}"{% if small %} srcset="{{ small }} 600w, {{ item.image }} {{ dim.w }}w" sizes="(min-width: 700px) 560px, 86vw"{% endif %} alt="{{ item.alt }}" loading="{{ 'eager' if loop.first else 'lazy' }}" width="{{ dim.w }}" height="{{ dim.h }}"></a>
+      <figcaption>{{ item.caption }}</figcaption>
+    </figure>
+    {%- endfor %}
+  </div>
+  <div class="carousel-dots" role="group" aria-label="בחירת עבודה">
+    {%- for item in gallery.items | inCarousel %}
+    <button type="button" class="carousel-dot" aria-label="עבודה {{ loop.index }}"{% if loop.first %} aria-current="true"{% endif %}></button>
+    {%- endfor %}
+  </div>
+</div>

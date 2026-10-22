@@ -1,0 +1,165 @@
+---
+permalink: "studio-{{ priceList.listKey }}.html"
+eleventyExcludeFromCollections: true
+---
+{#- מחולל הצעות מחיר של מוריה. עמוד פנימי: לא מקושר מהאתר, noindex, ההצעות נשמרות רק במכשיר -#}
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>הצעות מחיר · {{ site.name }}</title>
+  <meta name="theme-color" content="#FAF6EE">
+  <link rel="icon" type="image/png" href="assets/img/icon-512.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/quote-builder.css">
+</head>
+<body>
+
+<div class="lock" id="lock">
+  <form class="lock-box" id="lock-form">
+    <img src="assets/img/logo-small.png" alt="" width="64" height="61">
+    <h1>הצעות מחיר</h1>
+    <label for="pin">קוד כניסה</label>
+    <input id="pin" type="password" inputmode="numeric" autocomplete="off">
+    <button class="btn btn-main" type="submit">כניסה</button>
+    <p class="err" id="pin-err" role="alert"></p>
+  </form>
+</div>
+
+<div class="app" id="app" hidden>
+
+  {# רשימת ההצעות #}
+  <section class="view" id="view-list">
+    <header class="bar">
+      <div class="brand"><img src="assets/img/logo-small.png" alt="" width="36" height="34"><strong>הצעות מחיר</strong></div>
+      <button class="btn btn-main btn-sm" type="button" id="new-quote">+ הצעה חדשה</button>
+    </header>
+    <div class="list" id="quote-list"></div>
+    <p class="empty" id="list-empty">עוד אין הצעות. לוחצים על "הצעה חדשה" אחרי השיחה עם הזוג.</p>
+    <details class="backup">
+      <summary>גיבוי ושחזור</summary>
+      <p class="small">ההצעות נשמרות רק בטלפון הזה. כדאי להוריד גיבוי מדי פעם, למשל לגוגל דרייב.</p>
+      <div class="row">
+        <button class="btn btn-ghost btn-sm" type="button" id="export">הורדת גיבוי</button>
+        <label class="btn btn-ghost btn-sm" for="import">שחזור מגיבוי</label>
+        <input type="file" id="import" accept="application/json" hidden>
+      </div>
+    </details>
+  </section>
+
+  {# עריכת הצעה #}
+  <section class="view" id="view-edit" hidden>
+    <header class="bar">
+      <button class="link" type="button" data-go="list">→ כל ההצעות</button>
+      <span class="muted" id="edit-number"></span>
+    </header>
+
+    <form id="quote-form" autocomplete="off">
+      <fieldset>
+        <legend>הלקוחות</legend>
+        <label for="f-names">שמות</label>
+        <input id="f-names" name="names" placeholder="נועה ואיתי כהן" required>
+        <div class="two">
+          <div><label for="f-phone">טלפון</label><input id="f-phone" name="phone" type="tel" inputmode="tel" dir="ltr"></div>
+          <div><label for="f-email">מייל</label><input id="f-email" name="email" type="email" dir="ltr"></div>
+        </div>
+        <div class="two">
+          <div><label for="f-event">סוג האירוע</label><input id="f-event" name="event" list="event-types" value="חתונה"></div>
+          <div><label for="f-date">תאריך האירוע</label><input id="f-date" name="eventDate" type="date"></div>
+        </div>
+        <datalist id="event-types"><option value="חתונה"><option value="חינה"><option value="בר מצווה"><option value="בת מצווה"><option value="ברית"><option value="יום הולדת"></datalist>
+        <label for="f-venue">מקום האירוע (רשות)</label>
+        <input id="f-venue" name="venue">
+      </fieldset>
+
+      <fieldset>
+        <legend>הסקיצה (רשות)</legend>
+        <div class="sketch-pick">
+          <img id="sketch-preview" alt="" hidden>
+          <label class="btn btn-ghost btn-sm" for="f-sketch">בחירת תמונה</label>
+          <input id="f-sketch" type="file" accept="image/*" hidden>
+          <button class="link danger" type="button" id="sketch-remove" hidden>הסרה</button>
+        </div>
+        <label for="f-caption">כיתוב לתמונה</label>
+        <input id="f-caption" name="sketchCaption" placeholder="הכיוון שדיברנו עליו">
+      </fieldset>
+
+      <fieldset>
+        <legend>מוצרים</legend>
+        <div class="lines" id="lines"></div>
+        <p class="small">הוספה מהרשימה (המחיר הרגיל נכנס לבד, ואפשר לשנות):</p>
+        <div class="chips" id="catalog"></div>
+        <button class="btn btn-ghost btn-sm" type="button" id="add-free">+ שורה חופשית</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>הנחה, מקדמה ותוקף</legend>
+        <label for="f-disc-type">הנחה</label>
+        <div class="two">
+          <select id="f-disc-type" name="discType">
+            <option value="none">בלי הנחה</option>
+            <option value="first">הזמנה ראשונה {{ coupon.code }} (10%)</option>
+            <option value="pct">אחוזים</option>
+            <option value="amount">סכום בשקלים</option>
+          </select>
+          <input id="f-disc-val" name="discValue" type="number" inputmode="decimal" min="0" placeholder="כמה" aria-label="גובה ההנחה">
+        </div>
+        <div class="two">
+          <div><label for="f-deposit">מקדמה (%)</label><input id="f-deposit" name="depositPct" type="number" inputmode="numeric" min="0" max="100"></div>
+          <div><label for="f-valid">תוקף (ימים)</label><input id="f-valid" name="validDays" type="number" inputmode="numeric" min="1"></div>
+        </div>
+        <label for="f-turnaround">זמן עבודה</label>
+        <input id="f-turnaround" name="turnaround">
+        <label for="f-notes">הערות להצעה (רשות)</label>
+        <textarea id="f-notes" name="notes" rows="3"></textarea>
+      </fieldset>
+
+      <div class="sum-bar">
+        <span>לתשלום: <strong id="live-total">0 ₪</strong></span>
+        <button class="btn btn-main" type="button" data-go="preview">להצעה המוכנה</button>
+      </div>
+    </form>
+  </section>
+
+  {# ההצעה המוכנה #}
+  <section class="view" id="view-preview" hidden>
+    <header class="bar no-print">
+      <button class="link" type="button" data-go="edit">→ חזרה לעריכה</button>
+    </header>
+    <div class="actions no-print">
+      <button class="btn btn-main" type="button" id="share">שליחה בוואטסאפ</button>
+      <button class="btn btn-ghost" type="button" id="save-pdf">שמירה כ-PDF</button>
+      <p class="small" id="share-msg" role="status"></p>
+    </div>
+    <div class="doc-wrap"><article class="doc" id="doc"></article></div>
+  </section>
+</div>
+
+<script id="config" type="application/json">{{ {
+  pin: priceList.pin,
+  business: priceList.business,
+  name: site.name,
+  tagline: site.tagline,
+  phone: site.phoneDisplay,
+  email: site.email,
+  url: site.url,
+  depositPercent: priceList.depositPercent,
+  validDays: priceList.validDays,
+  vatNote: priceList.vatNote,
+  turnaround: priceList.turnaround,
+  revisions: priceList.revisions,
+  cancellation: priceList.cancellation,
+  paymentTerms: priceList.paymentTerms,
+  payment: priceList.payment,
+  thanks: priceList.thanks,
+  couponCode: coupon.code,
+  catalog: [priceList.base].concat(priceList.extras)
+} | json | safe }}</script>
+<script src="assets/js/vendor/html2canvas-1.4.1.min.js" defer></script>
+<script src="assets/js/vendor/jspdf-2.5.1.umd.min.js" defer></script>
+<script src="assets/js/quote-builder.js" defer></script>
+</body>
+</html>

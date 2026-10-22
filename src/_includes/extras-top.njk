@@ -1,0 +1,36 @@
+{#- כניסה בצבעי מים (בכל כניסה לאתר) ופס הקופון. נטען מ־base.njk מיד אחרי <body> -#}
+<script>
+  (function () {
+    var root = document.documentElement;
+    root.classList.add("js");
+    // הפתיח מופיע בכל כניסה לאתר ובכל רענון, אבל לא במעבר בין עמודים בתוך האתר
+    var inner = false;
+    try {
+      var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+      var reload = nav && nav.type === "reload";
+      inner = !reload && !!document.referrer && new URL(document.referrer).origin === location.origin;
+    } catch (e) {}
+    if (!inner) root.classList.add("intro-on");
+  })();
+</script>
+<div class="intro" id="intro">
+  <span class="intro-wash intro-wash-1" aria-hidden="true"></span>
+  <span class="intro-wash intro-wash-2" aria-hidden="true"></span>
+  <span class="intro-wash intro-wash-3" aria-hidden="true"></span>
+  <div class="intro-mark">
+    <img class="intro-logo" src="assets/img/logo.webp" alt="" width="180" height="172">
+    <img class="intro-sign" src="assets/img/moriart.webp" alt="" width="600" height="259">
+  </div>
+  <button class="intro-skip" type="button">{{ "Skip" if lang == "en" else "דילוג" }}</button>
+</div>
+{%- if coupon.enabled %}
+{%- set en = (lang == 'en') %}
+<div class="coupon-bar" id="coupon-bar" data-line="{{ (coupon.whatsappLineEn if en and coupon.whatsappLineEn else coupon.whatsappLine) }}">
+  {%- if en and coupon.textEn %}
+  <p>{{ coupon.textEn }} <strong dir="ltr">{{ coupon.code }}</strong>{% if coupon.termsEn %}<span class="coupon-terms"> · {{ coupon.termsEn }}</span>{% endif %}</p>
+  {%- else %}
+  <p>{% if coupon.shortText %}<span class="coupon-long">{{ coupon.text }}</span><span class="coupon-short">{{ coupon.shortText }} ·</span>{% else %}{{ coupon.text }}{% endif %} <strong dir="ltr">{{ coupon.code }}</strong><span class="coupon-terms"> · {{ coupon.terms }}</span></p>
+  {%- endif %}
+  <button class="coupon-close" type="button" aria-label="{{ 'Close' if en else 'סגירת ההודעה' }}">×</button>
+</div>
+{%- endif %}
