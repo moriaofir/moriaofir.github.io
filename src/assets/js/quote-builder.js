@@ -214,9 +214,13 @@
 
   // ---------- המסמך ----------
   function renderDoc() {
-    var q = current, t = totals(q), b = CFG.business || {};
+    var priv = db.private || {};
+    var q = current, t = totals(q), b = Object.assign({}, CFG.business || {});
+    if (priv.idNumber) b.idNumber = priv.idNumber;
+    if (priv.address) b.address = priv.address;
     var valid = addDays(q.created, q.validDays);
-    var pay = CFG.payment || {};
+    var pay = Object.assign({}, CFG.payment || {});
+    ["bit", "paybox", "bank"].forEach(function (k) { if (priv[k]) pay[k] = priv[k]; });
     var payWays = [];
     if (pay.bit) payWays.push("ביט: " + esc(pay.bit));
     if (pay.paybox) payWays.push("PayBox: " + esc(pay.paybox));
@@ -326,6 +330,17 @@
     }).then(function () { busy(btn, false); });
   });
 
+  // ---------- פרטים אישיים (רק במכשיר, לא באתר הציבורי) ----------
+  document.querySelectorAll("[data-private]").forEach(function (input) {
+    var k = input.dataset.private;
+    input.value = (db.private || {})[k] || "";
+    input.addEventListener("change", function () {
+      db.private = db.private || {};
+      db.private[k] = input.value.trim();
+      save();
+    });
+  });
+
   // ---------- גיבוי ----------
   $("export").addEventListener("click", function () {
     var blob = new Blob([JSON.stringify(db)], { type: "application/json" });
@@ -341,6 +356,7 @@
       var have = {}; db.quotes.forEach(function (q) { have[q.id] = true; });
       data.quotes.forEach(function (q) { if (!have[q.id]) db.quotes.push(q); });
       db.counter = Math.max(db.counter || 0, data.counter || 0);
+      if (data.private && !db.private) db.private = data.private;
       save(); renderList();
     }).catch(function () { $("list-empty").hidden = false; $("list-empty").textContent = "הקובץ הזה לא נראה כמו גיבוי של הצעות מחיר."; });
     e.target.value = "";

@@ -39,6 +39,15 @@ eleventyExcludeFromCollections: true
     </header>
     <div class="list" id="quote-list"></div>
     <p class="empty" id="list-empty">עוד אין הצעות. לוחצים על "הצעה חדשה" אחרי השיחה עם הזוג.</p>
+    <details class="backup" id="private-box">
+      <summary>פרטים אישיים להצעה (נשמרים רק בטלפון הזה)</summary>
+      <p class="small">מספר העוסק ופרטי התשלום לא נשמרים באתר, כי הקוד שלו ציבורי. ממלאים פעם אחת, והם יופיעו בכל הצעה. הם נכללים גם בגיבוי.</p>
+      <label>מספר עוסק פטור<input type="text" inputmode="numeric" data-private="idNumber" autocomplete="off"></label>
+      <label>כתובת (רשות)<input type="text" data-private="address" autocomplete="off"></label>
+      <label>ביט (מספר טלפון)<input type="text" inputmode="tel" data-private="bit" autocomplete="off"></label>
+      <label>PayBox<input type="text" data-private="paybox" autocomplete="off"></label>
+      <label>העברה בנקאית (בנק, סניף, חשבון)<input type="text" data-private="bank" autocomplete="off"></label>
+    </details>
     <details class="backup">
       <summary>גיבוי ושחזור</summary>
       <p class="small">ההצעות נשמרות רק בטלפון הזה. כדאי להוריד גיבוי מדי פעם, למשל לגוגל דרייב.</p>
