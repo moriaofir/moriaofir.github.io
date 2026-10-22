@@ -85,7 +85,7 @@ description: "הזמנות מצוירות ביד בצבעי מים, בהתאמה
       </a>
       {%- endfor %}
     </div>
-    <p class="muted narrow">הזמנה שאני מציירת כולה ביד בצבעי מים, או הזמנה לחתונה בעיצוב אישי, וגם חבילת הזמנות לכל האירועים של החתונה.</p>
+    <p class="muted narrow">הזמנה לחתונה בעיצוב אישי, מצוירת ביד בצבעי מים, או חבילת הזמנות לכל האירועים של החתונה.</p>
     {%- set homeExtras = services.items | selectattr("home") %}
     {%- if homeExtras.length %}
     <p class="small narrow extras-more">ועוד: {% for s in homeExtras %}<a href="services.html#s-{{ s.icon }}">{{ s.short }}</a>{% if not loop.last %} · {% endif %}{% endfor %}</p>
