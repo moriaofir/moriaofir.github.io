@@ -218,12 +218,10 @@ content:
           - { name: desc, label: פירוט, type: string }
           - { name: price, label: מחיר רגיל, type: number, required: true }
       - name: business
-        label: פרטי העסק בראש ההצעה
+        label: "ראש ההצעה (מספר העוסק, כתובת ופרטי תשלום מוזנים רק בטלפון של מוריה, לא כאן: האתר ציבורי)"
         type: object
         fields:
-          - { name: idLabel, label: "כיתוב (למשל: עוסק פטור מס')", type: string }
-          - { name: idNumber, label: מספר העוסק, type: string }
-          - { name: address, label: "כתובת (ריק = לא מוצג)", type: string }
+          - { name: idLabel, label: "כיתוב לפני מספר העוסק (למשל: עוסק פטור מס')", type: string }
       - { name: depositPercent, label: מקדמה באחוזים, type: number }
       - { name: validDays, label: כמה ימים ההצעה בתוקף, type: number }
       - { name: turnaround, label: זמן עבודה, type: string }
@@ -232,12 +230,5 @@ content:
       - { name: cancellation, label: "תנאי ביטול (ריק = לא מוצג)", type: text }
       - { name: vatNote, label: שורת מע"מ, type: string }
       - { name: thanks, label: משפט תודה בסוף ההצעה, type: string }
-      - name: payment
-        label: אמצעי תשלום (ריק = לא מוצג)
-        type: object
-        fields:
-          - { name: bit, label: מספר לביט, type: string }
-          - { name: paybox, label: קישור לפייבוקס, type: string }
-          - { name: bank, label: "העברה בנקאית (בנק, סניף, חשבון, שם)", type: text }
       - { name: pin, label: קוד הכניסה למחולל ההצעות, type: string }
       - { name: listKey, label: "קוד בכתובת של המחולל (שינוי שלו משנה את הקישור!)", type: string }

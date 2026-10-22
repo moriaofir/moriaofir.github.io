@@ -39,16 +39,9 @@
       "price": 600
     }
   ],
-  "payment": {
-    "bit": "",
-    "paybox": "",
-    "bank": ""
-  },
   "pin": "2580",
   "business": {
-    "idLabel": "עוסק פטור מס'",
-    "idNumber": "",
-    "address": ""
+    "idLabel": "עוסק פטור מס'"
   },
   "paymentTerms": "",
   "thanks": "תודה שבחרתם בי, מחכה להתחיל לצייר בשבילכם."
