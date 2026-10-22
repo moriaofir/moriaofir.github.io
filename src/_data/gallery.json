@@ -36,6 +36,22 @@
       "carousel": true
     },
     {
+      "image": "assets/img/gallery/sunflowers-einav-yotam-mockup.webp",
+      "alt": "ההזמנה של עינב ויותם משה עם חמניות ופרחים כחולים בצבעי מים, וכרטיס הפסוק בזר חמניות",
+      "caption": "עינב ויותם: חמניות ופרחים כחולים, הזמנה וכרטיס פסוק",
+      "category": "חתונות",
+      "home": true,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/gallery/sunflowers-verse.webp",
+      "alt": "זר חמניות ופרחים כחולים בצבעי מים סביב השורות \"אני אבחר בך ואת בי תבחרי\" של נעמי שמר",
+      "caption": "זר החמניות: \"אני אבחר בך ואת בי תבחרי\"",
+      "category": "חתונות",
+      "home": false,
+      "carousel": true
+    },
+    {
       "image": "assets/img/gallery/hummingbirds-invitation.webp",
       "alt": "הזמנה עם זוג יונקי דבש צבעוניים",
       "caption": "ההזמנה הראשונה שציירתי: החתונה שלנו",
