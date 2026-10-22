@@ -19,7 +19,9 @@
   <span class="intro-wash intro-wash-3" aria-hidden="true"></span>
   <div class="intro-mark">
     <img class="intro-logo" src="assets/img/logo.webp" alt="" width="180" height="172">
+    {%- if site.showSignature %}
     <img class="intro-sign" src="assets/img/moriart.webp" alt="" width="600" height="259">
+    {%- endif %}
   </div>
   <button class="intro-skip" type="button">{{ "Skip" if lang == "en" else "דילוג" }}</button>
 </div>
@@ -29,7 +31,7 @@
   {%- if en and coupon.textEn %}
   <p>{{ coupon.textEn }} <strong dir="ltr">{{ coupon.code }}</strong>{% if coupon.termsEn %}<span class="coupon-terms"> · {{ coupon.termsEn }}</span>{% endif %}</p>
   {%- else %}
-  <p>{% if coupon.shortText %}<span class="coupon-long">{{ coupon.text }}</span><span class="coupon-short">{{ coupon.shortText }} ·</span>{% else %}{{ coupon.text }}{% endif %} <strong dir="ltr">{{ coupon.code }}</strong><span class="coupon-terms"> · {{ coupon.terms }}</span></p>
+  <a class="coupon-link" href="{{ ('היי מוריה, ' + coupon.whatsappLine + '. אשמח להתחיל הזמנה') | whatsapp(site.phone) }}" target="_blank" rel="noopener"><p>{% if coupon.shortText %}<span class="coupon-long">{{ coupon.text }}</span><span class="coupon-short">{{ coupon.shortText }} ·</span>{% else %}{{ coupon.text }}{% endif %} <strong dir="ltr">{{ coupon.code }}</strong><span class="coupon-terms"> · {{ coupon.terms }}</span> <span class="coupon-cta">למימוש ←</span></p></a>
   {%- endif %}
   <button class="coupon-close" type="button" aria-label="{{ 'Close' if en else 'סגירת ההודעה' }}">×</button>
 </div>

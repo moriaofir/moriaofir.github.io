@@ -27,7 +27,7 @@
   <meta property="og:site_name" content="{{ site.name }}, {{ site.tagline }}">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
-  <meta property="og:image" content="{{ site.url }}/assets/img/og.jpg">
+  <meta property="og:image" content="{{ site.url }}/assets/img/og.jpg?v=2">
   <meta name="theme-color" content="#FAF6EE">
   <link rel="icon" type="image/png" href="assets/img/icon-512.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -114,7 +114,9 @@
         <img src="assets/img/logo.webp" alt="{{ site.name }}, {{ site.tagline }}" width="96" height="92" loading="lazy">
         <p>{{ site.name }} · הזמנות מאוירות בעבודת יד</p>
         <p>{{ site.area }}</p>
+        {%- if site.showSignature %}
         <img class="footer-sign" src="assets/img/moriart.webp" alt="" width="600" height="259" loading="lazy">
+        {%- endif %}
       </div>
       <nav class="footer-col" aria-label="עמודים">
         <h2 class="footer-title">באתר</h2>

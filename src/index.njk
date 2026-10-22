@@ -10,7 +10,6 @@ description: "הזמנות מצוירות ביד בצבעי מים, בהתאמה
   <div class="wrap">
     <img class="arch hero-img" src="assets/img/gallery/hummingbirds-invitation-600.webp" srcset="assets/img/gallery/hummingbirds-invitation-600.webp 600w, assets/img/gallery/hummingbirds-invitation.webp 1195w" sizes="(min-width: 900px) 420px, 240px" alt="זוג יונקי דבש ופרחים, מצוירים בצבעי מים על הזמנה" width="420" height="516" fetchpriority="high">
     <div class="stack">
-      <p class="hand">מצויר ביד, על נייר אמיתי</p>
       <h1 class="reveal">הזמנות מצוירות ביד, בצבעי&nbsp;מים, רק&nbsp;בשבילכם</h1>
       <p class="muted">כל הזמנה מתחילה בדף לבן ומכחול. אני מציירת אותה מאפס, לפי הסיפור שלכם, כדי שהאורחים יחזיקו ביד משהו שאין לאף אחד אחר.</p>
       <div class="actions">
@@ -139,7 +138,7 @@ description: "הזמנות מצוירות ביד בצבעי מים, בהתאמה
       <li><span class="step-num">3</span><div><strong>מדייקים יחד</strong><p>משנים צבע, מזיזים פרח, עד שזה בדיוק אתם.</p></div></li>
       <li><span class="step-num">4</span><div><strong>ההזמנה מוכנה</strong><p>תמונה לשליחה בוואטסאפ וקובץ PDF מוכן להדפסה.</p></div></li>
     </ol>
-    <a class="text-link" href="how-it-works.html">איך זה עובד, בפירוט</a>
+    <div class="actions"><a class="btn btn-outline" href="how-it-works.html">לכל השלבים בפירוט <span aria-hidden="true">←</span></a></div>
   </div>
 </section>
 
@@ -156,7 +155,9 @@ description: "הזמנות מצוירות ביד בצבעי מים, בהתאמה
     <h2>אני מוריה</h2>
     <p class="muted narrow">יש משהו בצבעי מים שאי אפשר לשלוט בו עד הסוף: הצבע זורם, נמזג, מפתיע. בגלל זה כל ציור יוצא קצת אחר, וזה בדיוק מה שאני אוהבת בו.</p>
     <p class="muted narrow">אני גם מעצבת גרפית, אז גם את האיור וגם את עיצוב ההזמנה סביבו אני עושה בעצמי.</p>
+    {%- if site.showSignature %}
     <img class="moria-sign" src="assets/img/moriart.webp" alt="MoriArt, החתימה של מוריה" width="600" height="259" loading="lazy">
+    {%- endif %}
     <a class="text-link" href="about.html">עוד עליי</a>
   </div>
 </section>

@@ -25,9 +25,37 @@
   const open = (yes) => {
     panel.hidden = !yes;
     btn.setAttribute("aria-expanded", String(yes));
-    if (yes) panel.querySelector("button").focus();
+    if (yes) { if (btn.style.top) place(parseFloat(btn.style.top)); panel.querySelector("button").focus(); }
   };
-  btn.addEventListener("click", () => open(panel.hidden));
+  btn.addEventListener("click", (e) => { if (dragged) { dragged = false; e.preventDefault(); return; } open(panel.hidden); });
+
+  // אפשר לגרור את הכפתור למעלה ולמטה לאורך הקצה. המיקום נשמר במכשיר
+  const POS = "a11yPos";
+  const place = (y) => {
+    const half = btn.offsetHeight / 2 + 8;
+    const top = Math.max(half, Math.min(window.innerHeight - half, y));
+    btn.style.top = top + "px";
+    panel.style.top = Math.max(16 + panel.offsetHeight / 2, Math.min(window.innerHeight - 16 - panel.offsetHeight / 2, top)) + "px";
+    return top;
+  };
+  let dragged = false, startY = 0, moving = false;
+  try { const f = parseFloat(localStorage.getItem(POS)); if (f > 0 && f < 1) place(f * window.innerHeight); } catch (e) {}
+  btn.addEventListener("pointerdown", (e) => { startY = e.clientY; moving = true; dragged = false; });
+  window.addEventListener("pointermove", (e) => {
+    if (!moving) return;
+    if (!dragged && Math.abs(e.clientY - startY) < 8) return;
+    if (!dragged) { dragged = true; btn.classList.add("dragging"); try { btn.setPointerCapture(e.pointerId); } catch (err) {} }
+    place(e.clientY);
+  });
+  const drop = () => {
+    if (!moving) return;
+    moving = false;
+    btn.classList.remove("dragging");
+    if (dragged) { try { localStorage.setItem(POS, String(parseFloat(btn.style.top) / window.innerHeight)); } catch (e) {} }
+  };
+  window.addEventListener("pointerup", drop);
+  window.addEventListener("pointercancel", drop);
+  window.addEventListener("resize", () => { if (btn.style.top) { try { place(parseFloat(localStorage.getItem(POS)) * window.innerHeight); } catch (e) {} } });
   panel.querySelector(".a11y-close").addEventListener("click", () => { open(false); btn.focus(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) { open(false); btn.focus(); } });
   document.addEventListener("pointerdown", (e) => { if (!panel.hidden && !panel.contains(e.target) && !btn.contains(e.target)) open(false); });
