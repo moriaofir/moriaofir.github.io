@@ -25,10 +25,10 @@ npm start         # תצוגה מקומית
 ```
 
 ## העלאה לאוויר (GitHub Pages, חינם)
-1. מאגר GitHub ריק בשם `moria-site` בחשבון shiloofir1997-debug.
+1. המאגר: `moriaofir/moriaofir.github.io` (ארגון GitHub חינמי של העסק).
 2. מעלים אליו את התיקייה הזו. בכל דחיפה ל־`main`, הקובץ `.github/workflows/deploy.yml` בונה ומעלה את האתר.
 3. ב־Settings → Pages במאגר: Source = GitHub Actions.
-4. הכתובת: https://shiloofir1997-debug.github.io/moria-site
+4. הכתובת: https://moriaofir.github.io
 5. כשיהיה דומיין: Settings → Pages → Custom domain, ולעדכן `url` ב־`site.json`.
 
 ## עריכה בלי קוד
