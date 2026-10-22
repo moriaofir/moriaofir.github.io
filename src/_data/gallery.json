@@ -52,9 +52,9 @@
       "carousel": true
     },
     {
-      "image": "assets/img/gallery/yellow-bird-invitation.webp",
-      "alt": "הזמנה לחתונה עם ציפור צהובה קטנה על ענף",
-      "caption": "ציפור צהובה קטנה, עדינה ושמחה",
+      "image": "assets/img/gallery/shira-meir-bird.webp",
+      "alt": "ציפור צהובה קטנה על ענף, בצבעי מים, מההזמנה של שירה ומאיר",
+      "caption": "שירה ומאיר: ציפור צהובה קטנה, עדינה ושמחה",
       "category": "חתונות",
       "home": false,
       "carousel": true
@@ -69,8 +69,8 @@
     },
     {
       "image": "assets/img/gallery/white-flower-invitation.webp",
-      "alt": "הזמנה לחתונה עם פרח לבן גדול בפינה",
-      "caption": "פרח לבן אחד, הרבה אוויר",
+      "alt": "ההזמנה לחתונה של עמית ותהילה, בעיצוב גרפי עם פרח לבן מצויר בפינה",
+      "caption": "עמית ותהילה: פרח לבן אחד, הרבה אוויר",
       "category": "חתונות",
       "home": false,
       "carousel": true
