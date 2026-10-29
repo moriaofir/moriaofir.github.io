@@ -5,97 +5,113 @@
   "items": [
     {
       "image": "assets/img/gallery/bluebirds-mockup.webp",
-      "alt": "ההזמנה של גיתית ונועם, שני הצדדים: ציפורים כחולות על ענף, וצד הטקסט עם השמות",
       "caption": "גיתית ונועם: הציפורים הכחולות, עם צד הטקסט והשמות",
+      "alt": "ההזמנה של גיתית ונועם, שני הצדדים: ציפורים כחולות על ענף, וצד הטקסט עם השמות",
       "category": "חתונות",
       "home": true,
-      "carousel": true
+      "carousel": false
     },
     {
       "image": "assets/img/gallery/gitit-noam-shot-glasses.webp",
-      "alt": "כוסיות שוטים עם הציפורים הכחולות מההזמנה של גיתית ונועם והשמות שלהם, על בר עץ",
       "caption": "הציפורים של גיתית ונועם, גם על הכוסיות באירוע",
+      "alt": "כוסיות שוטים עם הציפורים הכחולות מההזמנה של גיתית ונועם והשמות שלהם, על בר עץ",
       "category": "חתונות",
       "home": false,
-      "carousel": true
+      "carousel": false
     },
     {
       "image": "assets/img/gallery/blue-flowers-wreath-mockup.webp",
-      "alt": "ההזמנה של חגי והדר עם זר פרחים כחולים, שני הצדדים",
       "caption": "חגי והדר: זר פרחים כחולים שעוטף את הפסוק",
+      "alt": "ההזמנה של חגי והדר עם זר פרחים כחולים, שני הצדדים",
       "category": "חתונות",
       "home": true,
       "carousel": true
     },
     {
       "image": "assets/img/gallery/tali-binyamin-invitation.webp",
-      "alt": "ההזמנה של טליה ובנימין: זאב וכבשה מחובקים בעשב, בצבעי מים, על רקע ירוק וצהוב",
       "caption": "טליה ובנימין: הזאב והכבשה",
+      "alt": "ההזמנה של טליה ובנימין: זאב וכבשה מחובקים בעשב, בצבעי מים, על רקע ירוק וצהוב",
       "category": "חתונות",
       "home": true,
       "carousel": true
     },
     {
       "image": "assets/img/gallery/sunflowers-einav-yotam-mockup.webp",
-      "alt": "ההזמנה של עינב ויותם משה עם חמניות ופרחים כחולים בצבעי מים, וכרטיס הפסוק בזר חמניות",
       "caption": "עינב ויותם: חמניות ופרחים כחולים, הזמנה וכרטיס פסוק",
+      "alt": "ההזמנה של עינב ויותם משה עם חמניות ופרחים כחולים בצבעי מים, וכרטיס הפסוק בזר חמניות",
       "category": "חתונות",
       "home": true,
-      "carousel": true
+      "carousel": false
     },
     {
       "image": "assets/img/gallery/sunflowers-verse.webp",
-      "alt": "זר חמניות ופרחים כחולים בצבעי מים סביב השורות \"אני אבחר בך ואת בי תבחרי\" של נעמי שמר",
       "caption": "זר החמניות: \"אני אבחר בך ואת בי תבחרי\"",
+      "alt": "זר חמניות ופרחים כחולים בצבעי מים סביב השורות \"אני אבחר בך ואת בי תבחרי\" של נעמי שמר",
       "category": "חתונות",
       "home": false,
       "carousel": true
     },
     {
       "image": "assets/img/gallery/hummingbirds-invitation.webp",
-      "alt": "הזמנה עם זוג יונקי דבש צבעוניים",
       "caption": "ההזמנה הראשונה שציירתי: החתונה שלנו",
+      "alt": "הזמנה עם זוג יונקי דבש צבעוניים",
       "category": "חתונות",
       "home": true,
       "carousel": true
     },
     {
       "image": "assets/img/gallery/bluebirds-invitation.webp",
+      "caption": "הציפורים של גיתית ונועם",
       "alt": "הזמנה לחתונה עם שתי ציפורים כחולות על ענף, בצבעי מים",
-      "caption": "ציפורים כחולות על ענף, לזוג שאוהב את הבוקר",
       "category": "חתונות",
       "home": true,
       "carousel": true
     },
     {
       "image": "assets/img/gallery/wildflowers-mayim-rabim.webp",
-      "alt": "הזמנה עם פרחי בר בצבעי מים והפסוק מים רבים",
       "caption": "פרחי בר, ו״מים רבים לא יוכלו לכבות את האהבה״",
-      "category": "חתונות",
-      "home": false,
-      "carousel": true
-    },
-    {
-      "image": "assets/img/gallery/shira-meir-bird.webp",
-      "alt": "ציפור צהובה קטנה על ענף, בצבעי מים, מההזמנה של שירה ומאיר",
-      "caption": "שירה ומאיר: ציפור צהובה קטנה, עדינה ושמחה",
+      "alt": "הזמנה עם פרחי בר בצבעי מים והפסוק מים רבים",
       "category": "חתונות",
       "home": false,
       "carousel": true
     },
     {
       "image": "assets/img/gallery/olive-tree-mockup.webp",
-      "alt": "הזמנה לחתונה עם עץ זית וזוג ציפורים",
       "caption": "עץ זית, שורשים ובית",
+      "alt": "הזמנה לחתונה עם עץ זית וזוג ציפורים",
       "category": "חתונות",
       "home": false,
       "carousel": true
     },
     {
       "image": "assets/img/gallery/white-flower-invitation.webp",
-      "alt": "ההזמנה לחתונה של עמית ותהילה, בעיצוב גרפי עם פרח לבן מצויר בפינה",
       "caption": "עמית ותהילה: פרח לבן אחד, הרבה אוויר",
+      "alt": "ההזמנה לחתונה של עמית ותהילה, בעיצוב גרפי עם פרח לבן מצויר בפינה",
       "category": "חתונות",
+      "home": false,
+      "carousel": false
+    },
+    {
+      "image": "assets/img/uploads/שירה ומאיר ציור.jpeg",
+      "caption": "\"הניצנים נראו בארץ\" הציפורים של שירה ומאיר",
+      "alt": "ציפורים צהובות שחורות על ענפים עם פרחים מסביב",
+      "category": "חתונה",
+      "home": true,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/uploads/שירה ומאיר- טקסט.jpeg",
+      "caption": "ההזמנה של שירה ומאיר טקסט",
+      "alt": "ההזמנה לחתונה עם כל הפרטים בצד שמאל יש ציפור צהובה",
+      "category": "חתונה",
+      "home": false,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/uploads/חינה עמית ותהילה.jpeg",
+      "caption": "הזמנה לחינה, עמית ותהילה, עיצוב גרפי",
+      "alt": "עיצוב הזמנה לחינה",
+      "category": "חינה",
       "home": false,
       "carousel": true
     }
