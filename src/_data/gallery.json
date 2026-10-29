@@ -105,7 +105,7 @@
       "alt": "ההזמנה לחתונה עם כל הפרטים בצד שמאל יש ציפור צהובה",
       "category": "חתונה",
       "home": false,
-      "carousel": true
+      "carousel": false
     },
     {
       "image": "assets/img/uploads/חינה עמית ותהילה.jpeg",
@@ -113,7 +113,7 @@
       "alt": "עיצוב הזמנה לחינה",
       "category": "חינה",
       "home": false,
-      "carousel": true
+      "carousel": false
     }
   ]
 }
