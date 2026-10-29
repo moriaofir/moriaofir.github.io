@@ -28,14 +28,6 @@
       "carousel": true
     },
     {
-      "image": "assets/img/gallery/tali-binyamin-invitation.webp",
-      "caption": "טליה ובנימין: הזאב והכבשה",
-      "alt": "ההזמנה של טליה ובנימין: זאב וכבשה מחובקים בעשב, בצבעי מים, על רקע ירוק וצהוב",
-      "category": "חתונות",
-      "home": true,
-      "carousel": true
-    },
-    {
       "image": "assets/img/gallery/sunflowers-einav-yotam-mockup.webp",
       "caption": "עינב ויותם: חמניות ופרחים כחולים, הזמנה וכרטיס פסוק",
       "alt": "ההזמנה של עינב ויותם משה עם חמניות ופרחים כחולים בצבעי מים, וכרטיס הפסוק בזר חמניות",
@@ -60,18 +52,18 @@
       "carousel": true
     },
     {
-      "image": "assets/img/gallery/bluebirds-invitation.webp",
-      "caption": "הציפורים של גיתית ונועם",
-      "alt": "הזמנה לחתונה עם שתי ציפורים כחולות על ענף, בצבעי מים",
+      "image": "assets/img/gallery/tali-binyamin-invitation.webp",
+      "caption": "טליה ובנימין: הזאב והכבשה",
+      "alt": "ההזמנה של טליה ובנימין: זאב וכבשה מחובקים בעשב, בצבעי מים, על רקע ירוק וצהוב",
       "category": "חתונות",
       "home": true,
       "carousel": true
     },
     {
-      "image": "assets/img/uploads/שירה ומאיר ציור.jpeg",
-      "caption": "\"הניצנים נראו בארץ\" הציפורים של שירה ומאיר",
-      "alt": "ציפורים צהובות שחורות על ענפים עם פרחים מסביב",
-      "category": "חתונה",
+      "image": "assets/img/gallery/bluebirds-invitation.webp",
+      "caption": "הציפורים של גיתית ונועם",
+      "alt": "הזמנה לחתונה עם שתי ציפורים כחולות על ענף, בצבעי מים",
+      "category": "חתונות",
       "home": true,
       "carousel": true
     },
@@ -81,6 +73,14 @@
       "alt": "הזמנה עם פרחי בר בצבעי מים והפסוק מים רבים",
       "category": "חתונות",
       "home": false,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/uploads/שירה ומאיר ציור.jpeg",
+      "caption": "\"הניצנים נראו בארץ\" הציפורים של שירה ומאיר",
+      "alt": "ציפורים צהובות שחורות על ענפים עם פרחים מסביב",
+      "category": "חתונה",
+      "home": true,
       "carousel": true
     },
     {
