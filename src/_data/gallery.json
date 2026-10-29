@@ -114,6 +114,22 @@
       "category": "חינה",
       "home": false,
       "carousel": false
+    },
+    {
+      "image": "assets/img/uploads/WhatsApp Image 2026-10-29 at 23.42.23.jpeg",
+      "caption": "חידוש ההזמנה שלנו",
+      "alt": "ציפורים יונק דבש סגול וזהב",
+      "category": "חתונה",
+      "home": true,
+      "carousel": true
+    },
+    {
+      "image": "assets/img/uploads/WhatsApp Image 2026-10-29 at 23.42.23 (1)-1.jpeg",
+      "caption": "חידוש ההזמנה שלנו",
+      "alt": "טקסט הזמנה לחתונה",
+      "category": "חתונה",
+      "home": false,
+      "carousel": false
     }
   ]
 }
