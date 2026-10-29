@@ -68,6 +68,14 @@
       "carousel": true
     },
     {
+      "image": "assets/img/uploads/שירה ומאיר ציור.jpeg",
+      "caption": "\"הניצנים נראו בארץ\" הציפורים של שירה ומאיר",
+      "alt": "ציפורים צהובות שחורות על ענפים עם פרחים מסביב",
+      "category": "חתונה",
+      "home": true,
+      "carousel": true
+    },
+    {
       "image": "assets/img/gallery/wildflowers-mayim-rabim.webp",
       "caption": "פרחי בר, ו״מים רבים לא יוכלו לכבות את האהבה״",
       "alt": "הזמנה עם פרחי בר בצבעי מים והפסוק מים רבים",
@@ -90,14 +98,6 @@
       "category": "חתונות",
       "home": false,
       "carousel": false
-    },
-    {
-      "image": "assets/img/uploads/שירה ומאיר ציור.jpeg",
-      "caption": "\"הניצנים נראו בארץ\" הציפורים של שירה ומאיר",
-      "alt": "ציפורים צהובות שחורות על ענפים עם פרחים מסביב",
-      "category": "חתונה",
-      "home": true,
-      "carousel": true
     },
     {
       "image": "assets/img/uploads/שירה ומאיר- טקסט.jpeg",
