@@ -5,12 +5,14 @@
   {%- endif %}
   {%- if t.image %}
   {%- set dim = t.image | imgSize %}
-  <button class="quote-zoom" type="button" aria-label="להגדיל את ההודעה של {{ t.names }}">
+  <button class="quote-zoom" type="button" aria-label="להגדיל את ההודעה{% if t.names %} של {{ t.names }}{% endif %}">
     <img class="quote-shot" src="{{ t.image }}" alt="צילום הודעת וואטסאפ: {{ t.quote }}" width="{{ dim.w }}" height="{{ dim.h }}" loading="lazy">
     <span class="quote-zoom-hint">לקריאת ההודעה המלאה</span>
   </button>
   {%- else %}
   <p class="quote-text{% if t.quote.length > 180 %} quote-long{% endif %}">״{{ t.quote }}״</p>
   {%- endif %}
-  <footer class="small">{{ t.names }}{% if t.event %} · {{ t.event }}{% endif %}{% if t.date %} · {{ t.date }}{% endif %}{% if t.source %} · <a href="{{ t.source }}" rel="noopener">לביקורת המלאה</a>{% endif %}</footer>
+  {%- if t.names or t.event %}
+  <footer class="small">{{ t.names }}{% if t.names and t.event %} · {% endif %}{{ t.event }}{% if t.date %} · {{ t.date }}{% endif %}{% if t.source %} · <a href="{{ t.source }}" rel="noopener">לביקורת המלאה</a>{% endif %}</footer>
+  {%- endif %}
 </blockquote>

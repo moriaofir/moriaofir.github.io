@@ -43,7 +43,7 @@ content:
           - { name: quote, label: הציטוט, type: text, required: true }
           - { name: highlight, label: משפט אחד בולט מתוך ההמלצה (רשות; מוצג גדול מעל הצילום), type: string }
           - { name: image, label: צילום מסך של ההודעה (רשות; אם יש, מוצג במקום הטקסט), type: image }
-          - { name: names, label: שמות, type: string, required: true }
+          - { name: names, label: שמות, type: string }
           - { name: event, label: סוג האירוע, type: string }
           - { name: date, label: חודש ושנה, type: string }
           - { name: source, label: קישור לביקורת המקורית (מתחתנים / גוגל), type: string }
