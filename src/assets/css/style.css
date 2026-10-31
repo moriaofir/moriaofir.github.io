@@ -318,3 +318,12 @@ blockquote { margin: 0; }
   .section { padding: 18px 0; background: none !important; border: 0; }
   .guide-checks li, .guide-list li { break-inside: avoid; }
 }
+
+/* תהליך העבודה: סרטון ומדף לבן להזמנה */
+.process-video { margin: 0 auto; width: 100%; max-width: min(360px, 74vw); }
+.process-video video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; background: var(--paper); border-radius: 14px; box-shadow: var(--shadow); }
+.from-to { margin: 0 auto; width: 100%; max-width: 640px; }
+.from-to-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; }
+.from-to-row img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); background: var(--white); }
+.from-to-arrow { font-size: clamp(2rem, 7vw, 3.2rem); color: var(--teal-deep); line-height: 1; }
+.from-to figcaption { margin-top: 18px; text-align: center; font-size: clamp(1.6rem, 5vw, 2.1rem); }
