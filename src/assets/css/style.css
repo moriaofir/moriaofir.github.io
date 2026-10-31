@@ -327,3 +327,4 @@ blockquote { margin: 0; }
 .from-to-row img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); background: var(--white); }
 .from-to-arrow { font-size: clamp(2rem, 7vw, 3.2rem); color: var(--teal-deep); line-height: 1; }
 .from-to figcaption { margin-top: 18px; text-align: center; font-size: clamp(1.6rem, 5vw, 2.1rem); }
+.from-to-row img.from-to-start { aspect-ratio: 1 / 1; }
