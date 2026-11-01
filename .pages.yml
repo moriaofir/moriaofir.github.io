@@ -25,6 +25,7 @@ content:
           - { name: alt, label: תיאור התמונה (לעיוורים ולגוגל), type: string, required: true }
           - { name: category, label: סוג אירוע, type: string, required: true }
           - { name: home, label: להציג בדף הבית, type: boolean }
+          - { name: withPrev, label: להצמיד לעבודה שלפניה ברשימה (למשל צד הטקסט ליד הציור), type: boolean }
           - { name: carousel, label: להציג בקרוסלה בדף הבית (הסדר כאן הוא הסדר בקרוסלה), type: boolean, default: true }
           - { name: sketch, label: צילום הסקיצה של העבודה הזו (רשות), type: image }
           - { name: video, label: סרטון קצר של המכחול על העבודה הזו, נפתח בלחיצה ארוכה (רשות, mp4 עד 3MB), type: file }

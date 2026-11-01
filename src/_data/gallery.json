@@ -76,6 +76,15 @@
       "carousel": true
     },
     {
+      "image": "assets/img/gallery/white-flower-invitation.webp",
+      "caption": "עמית ותהילה: פרח לבן אחד, הרבה אוויר",
+      "alt": "ההזמנה לחתונה של עמית ותהילה, בעיצוב גרפי עם פרח לבן מצויר בפינה",
+      "category": "חתונות",
+      "home": false,
+      "carousel": false,
+      "withPrev": true
+    },
+    {
       "image": "assets/img/uploads/שירה ומאיר ציור.jpeg",
       "caption": "\"הניצנים נראו בארץ\" הציפורים של שירה ומאיר",
       "alt": "ציפורים צהובות שחורות על ענפים עם פרחים מסביב",
@@ -84,28 +93,21 @@
       "carousel": true
     },
     {
+      "image": "assets/img/uploads/שירה ומאיר- טקסט.jpeg",
+      "caption": "ההזמנה של שירה ומאיר טקסט",
+      "alt": "ההזמנה לחתונה עם כל הפרטים בצד שמאל יש ציפור צהובה",
+      "category": "חתונה",
+      "home": false,
+      "carousel": false,
+      "withPrev": true
+    },
+    {
       "image": "assets/img/gallery/olive-tree-mockup.webp",
       "caption": "עץ זית, שורשים ובית",
       "alt": "הזמנה לחתונה עם עץ זית וזוג ציפורים",
       "category": "חתונות",
       "home": false,
       "carousel": true
-    },
-    {
-      "image": "assets/img/gallery/white-flower-invitation.webp",
-      "caption": "עמית ותהילה: פרח לבן אחד, הרבה אוויר",
-      "alt": "ההזמנה לחתונה של עמית ותהילה, בעיצוב גרפי עם פרח לבן מצויר בפינה",
-      "category": "חתונות",
-      "home": false,
-      "carousel": false
-    },
-    {
-      "image": "assets/img/uploads/שירה ומאיר- טקסט.jpeg",
-      "caption": "ההזמנה של שירה ומאיר טקסט",
-      "alt": "ההזמנה לחתונה עם כל הפרטים בצד שמאל יש ציפור צהובה",
-      "category": "חתונה",
-      "home": false,
-      "carousel": false
     },
     {
       "image": "assets/img/uploads/חינה עמית ותהילה.jpeg",
