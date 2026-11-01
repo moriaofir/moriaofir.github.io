@@ -130,6 +130,14 @@
       "category": "חתונה",
       "home": false,
       "carousel": false
+    },
+    {
+      "image": "assets/img/gallery/mountains-kol-dodi-invitation.webp",
+      "caption": "הרים בצבעי מים: \"קול דודי הינה זה בא\"",
+      "alt": "הזמנה עם הרים בגוונים של חרדל, ירוק ואפור כחלחל בצבעי מים, והפסוק \"קול דודי הינה זה בא, מדלג על ההרים, מקפץ על הגבעות\"",
+      "category": "חתונות",
+      "home": false,
+      "carousel": false
     }
   ]
 }
