@@ -25,6 +25,9 @@ whatsappMessage: "היי מוריה, ראיתי את הגלריה באתר וא�
 
     <div class="gallery">
       {%- for item in gallery.items %}
+      {#- עבודה שסומנה withPrev נשארת צמודה לעבודה שלפניה (למשל הציור וצד הטקסט) #}
+      {%- set nextItem = gallery.items[loop.index] %}
+      {%- if nextItem and nextItem.withPrev and not item.withPrev %}<div class="gallery-pair">{% endif %}
       {%- set small = item.image | small %}
       {%- set dim = item.image | imgSize %}
       <figure data-category="{{ item.category }}">
@@ -34,6 +37,7 @@ whatsappMessage: "היי מוריה, ראיתי את הגלריה באתר וא�
         </button>
         <figcaption>{{ item.caption }}</figcaption>
       </figure>
+      {%- if item.withPrev and not (nextItem and nextItem.withPrev) %}</div>{% endif %}
       {%- endfor %}
     </div>
 
