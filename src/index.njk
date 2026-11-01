@@ -92,6 +92,10 @@ description: "הזמנות מצוירות ביד בצבעי מים, בהתאמה
         <span class="strip-label"><span class="extras-icon">{% serviceIcon s.icon %}</span><span>{{ s.short }}</span></span>
       </a>
       {%- endfor %}
+      <a class="strip-wide" href="branding.html">
+        <img class="strip-img" src="assets/img/branding/gitit-noam-shot-glasses-600.webp" srcset="assets/img/branding/gitit-noam-shot-glasses-600.webp 600w, assets/img/branding/gitit-noam-shot-glasses.webp 1600w" sizes="(min-width: 760px) 720px, 100vw" alt="כוסיות צ'ייסר עם הציפורים מההזמנה של גיתית ונועם" loading="lazy" width="600" height="300">
+        <span class="strip-label"><span class="extras-icon">{% serviceIcon "glass" %}</span><span>מיתוג אירוע</span></span>
+      </a>
     </div>
     <p class="muted narrow">הזמנה לחתונה בעיצוב אישי, מצוירת ביד בצבעי מים, או חבילת הזמנות לכל האירועים של החתונה.</p>
     {%- set homeExtras = services.items | selectattr("home") %}

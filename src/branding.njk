@@ -1,0 +1,73 @@
+---
+layout: base.njk
+permalink: branding.html
+canonical: branding.html
+pageKey: branding
+title: "מיתוג אירוע: הציור מההזמנה על בירכונים, מגנטים וכוסיות · מוריה אופיר"
+description: "קובץ נקי של ההזמנה המצוירת שלכם, לבירכונים, מגנטים, כוסיות ומזכרות. קו עיצובי אחד לכל החתונה, שלא יהיה לאף אחד אחר."
+whatsappMessage: "היי מוריה, ראיתי באתר את מיתוג האירוע ואשמח לשמוע על הקובץ הנקי"
+---
+<section class="section">
+  <div class="wrap stack narrow">
+    <p class="hand">מיתוג אירוע</p>
+    <h1>{{ branding.title }}</h1>
+    {%- for line in branding.intro.split("\n") %}
+    <p{% if not loop.first %} class="muted"{% endif %}>{% if loop.first %}<strong>{{ line }}</strong>{% else %}{{ line }}{% endif %}</p>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="section section-beige">
+  <div class="wrap">
+    <div class="gallery branding-gallery">
+      {%- for item in branding.items %}
+      {%- set small = item.image | small %}
+      {%- set dim = item.image | imgSize %}
+      <figure>
+        <button class="zoom" type="button" data-full="{{ item.image }}" data-caption="{{ item.caption }}" aria-label="להגדלה: {{ item.caption }}">
+          <img src="{{ small or item.image }}"{% if small %} srcset="{{ small }} 600w, {{ item.image }} {{ dim.w }}w" sizes="(min-width: 900px) 340px, 50vw"{% endif %} alt="{{ item.alt }}" loading="lazy" width="{{ dim.w }}" height="{{ dim.h }}">
+        </button>
+        <figcaption>{{ item.caption }}</figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+{%- if branding.steps.length %}
+<section class="section">
+  <div class="wrap stack">
+    <h2>{{ branding.stepsTitle }}</h2>
+    <ol class="steps row branding-steps">
+      {%- for s in branding.steps %}
+      <li><span class="step-num">{{ loop.index }}</span><div><strong>{{ s.title }}</strong><p>{{ s.text }}</p></div></li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+{%- endif %}
+
+<section class="section cta-wash">
+  <div class="wrap stack center narrow">
+    <h2>החתונה שלכם, בקו אחד</h2>
+    <div class="actions" style="justify-content: center">
+      <a class="btn btn-primary" href="{{ branding.whatsappMessage | whatsapp(site.phone) }}">{% waIcon 20 %} {{ branding.button }}</a>
+    </div>
+    {%- if branding.terms %}<p class="small branding-terms">{{ branding.terms }}</p>{% endif %}
+  </div>
+</section>
+
+<dialog class="lightbox" aria-label="תמונה מוגדלת">
+  <button class="close" type="button" aria-label="סגירה">×</button>
+  <div class="lightbox-images">
+    <figure class="lightbox-sketch" hidden><img alt=""><figcaption>הסקיצה</figcaption></figure>
+    <img class="lightbox-main" alt="">
+  </div>
+  <p class="lightbox-caption"></p>
+  <p class="lightbox-want"><a class="btn btn-primary" href="{{ branding.whatsappMessage | whatsapp(site.phone) }}" data-phone="{{ site.phone }}" data-message="{{ branding.whatsappMessage }}">{% waIcon 20 %} רוצים גם אתם?</a></p>
+  <div class="lightbox-nav">
+    <button class="prev" type="button" dir="ltr" aria-label="התמונה הקודמת">›</button>
+    <span class="lightbox-count" aria-live="polite"></span>
+    <button class="next" type="button" dir="ltr" aria-label="התמונה הבאה">‹</button>
+  </div>
+</dialog>

@@ -54,7 +54,12 @@ whatsappMessage: "היי מוריה, ראיתי באתר מה אפשר להזמ�
           <h3>{{ s.title }}</h3>
           <p class="muted">{{ s.text }}</p>
           {%- if s.ideas %}<p class="small">{{ s.ideas }}</p>{% endif %}
+          {%- if s.link %}
+          <a class="btn btn-outline" href="{{ s.link }}">{{ s.linkText or "לפרטים" }} <span aria-hidden="true">←</span></a>
+          {%- endif %}
+          {%- if s.button %}
           <a class="text-link" href="{{ s.whatsappMessage | whatsapp(site.phone) }}">{{ s.button }}</a>
+          {%- endif %}
         </div>
       </li>
       {%- endfor %}
