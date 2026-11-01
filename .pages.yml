@@ -145,6 +145,36 @@ content:
           - { name: whatsappMessage, label: הודעת וואטסאפ מוכנה, type: string }
           - { name: icon, label: "אייקון (brush, layout, frame, house, gift, envelope)", type: string }
           - { name: home, label: להציג ברצועה בדף הבית, type: boolean }
+          - { name: link, label: "כפתור לעמוד באתר (רשות, למשל branding.html)", type: string }
+          - { name: linkText, label: טקסט הכפתור לעמוד, type: string }
+
+  - name: branding
+    label: מיתוג אירוע (עמוד)
+    type: file
+    path: src/_data/branding.json
+    format: json
+    fields:
+      - { name: title, label: כותרת, type: string }
+      - { name: intro, label: "פתיח (כל שורה היא פסקה)", type: text }
+      - name: items
+        label: תמונות
+        type: object
+        list: true
+        fields:
+          - { name: image, label: תמונה, type: image }
+          - { name: alt, label: תיאור התמונה, type: string }
+          - { name: caption, label: כיתוב מתחת לתמונה, type: string }
+      - { name: stepsTitle, label: כותרת השלבים, type: string }
+      - name: steps
+        label: שלבים
+        type: object
+        list: true
+        fields:
+          - { name: title, label: כותרת, type: string }
+          - { name: text, label: הסבר, type: string }
+      - { name: button, label: טקסט הכפתור לוואטסאפ, type: string }
+      - { name: whatsappMessage, label: הודעת וואטסאפ מוכנה, type: string }
+      - { name: terms, label: שורת תנאי השימוש בקובץ, type: text }
 
   - name: timeline
     label: מחשבון מתי להתחיל

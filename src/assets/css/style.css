@@ -329,3 +329,11 @@ blockquote { margin: 0; }
 .from-to-arrow { font-size: clamp(2rem, 7vw, 3.2rem); color: var(--teal-deep); line-height: 1; }
 .from-to figcaption { margin-top: 18px; text-align: center; font-size: clamp(1.6rem, 5vw, 2.1rem); }
 .from-to-row img.from-to-start { aspect-ratio: 1 / 1; }
+
+/* מיתוג אירוע */
+@media (min-width: 900px) { .branding-gallery { columns: 2; max-width: 860px; margin-inline: auto; } }
+@media (min-width: 900px) { .steps.row.branding-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.branding-terms { margin-top: 18px; max-width: 520px; margin-inline: auto; }
+/* קובייה רחבה שלישית ברצועת "מה אפשר להזמין" בדף הבית */
+.extras-strip-two a.strip-wide { grid-column: 1 / -1; }
+.extras-strip-two a.strip-wide .strip-img { aspect-ratio: 2 / 1; object-position: 50% 40%; }

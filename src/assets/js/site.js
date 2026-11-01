@@ -62,7 +62,7 @@ if (lightbox && typeof lightbox.showModal === "function") {
     // "רוצים בסגנון הזה?": וואטסאפ עם שם העבודה, ושורת הקופון אם הבר עדיין פתוח
     if (want) {
       const bar = document.getElementById("coupon-bar");
-      let text = `היי מוריה, ראיתי באתר את העבודה "${btn.dataset.caption || source.alt}" ואשמח להזמנה בסגנון הזה`;
+      let text = want.dataset.message || `היי מוריה, ראיתי באתר את העבודה "${btn.dataset.caption || source.alt}" ואשמח להזמנה בסגנון הזה`;
       if (bar && !bar.hidden && bar.dataset.line) text += `\n${bar.dataset.line}`;
       want.href = `https://wa.me/${want.dataset.phone}?text=${encodeURIComponent(text)}`;
     }
