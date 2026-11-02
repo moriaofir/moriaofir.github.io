@@ -68,7 +68,7 @@
       "carousel": true
     },
     {
-      "image": "assets/img/uploads/wildflowers-tehila-amit.jpg",
+      "image": "assets/img/gallery/wildflowers-tehila-amit.webp",
       "caption": "פרחי בר, ו״מים רבים לא יוכלו לכבות את האהבה״",
       "alt": "הזמנה עם פרחי בר בצבעי מים והפסוק מים רבים",
       "category": "חתונות",
@@ -85,7 +85,7 @@
       "withPrev": true
     },
     {
-      "image": "assets/img/uploads/שירה ומאיר ציור.jpeg",
+      "image": "assets/img/gallery/shira-meir-birds-painting.webp",
       "caption": "\"הניצנים נראו בארץ\" הציפורים של שירה ומאיר",
       "alt": "ציפורים צהובות שחורות על ענפים עם פרחים מסביב",
       "category": "חתונה",
@@ -93,7 +93,7 @@
       "carousel": true
     },
     {
-      "image": "assets/img/uploads/שירה ומאיר- טקסט.jpeg",
+      "image": "assets/img/gallery/shira-meir-text.webp",
       "caption": "ההזמנה של שירה ומאיר טקסט",
       "alt": "ההזמנה לחתונה עם כל הפרטים בצד שמאל יש ציפור צהובה",
       "category": "חתונה",
@@ -110,7 +110,7 @@
       "carousel": true
     },
     {
-      "image": "assets/img/uploads/חינה עמית ותהילה.jpeg",
+      "image": "assets/img/gallery/amit-tehila-henna.webp",
       "caption": "הזמנה לחינה, עמית ותהילה, עיצוב גרפי",
       "alt": "עיצוב הזמנה לחינה",
       "category": "חינה",
@@ -118,7 +118,7 @@
       "carousel": false
     },
     {
-      "image": "assets/img/uploads/WhatsApp Image 2026-10-29 at 23.42.23.jpeg",
+      "image": "assets/img/gallery/renewed-hummingbirds.webp",
       "caption": "חידוש ההזמנה שלנו",
       "alt": "ציפורים יונק דבש סגול וזהב",
       "category": "חתונה",
@@ -126,12 +126,13 @@
       "carousel": true
     },
     {
-      "image": "assets/img/uploads/WhatsApp Image 2026-10-29 at 23.42.23 (1)-1.jpeg",
+      "image": "assets/img/gallery/renewed-text.webp",
       "caption": "חידוש ההזמנה שלנו",
       "alt": "טקסט הזמנה לחתונה",
       "category": "חתונה",
       "home": false,
-      "carousel": false
+      "carousel": false,
+      "withPrev": true
     },
     {
       "image": "assets/img/gallery/mountains-kol-dodi-invitation.webp",

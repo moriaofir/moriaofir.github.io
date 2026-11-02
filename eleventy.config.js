@@ -68,6 +68,16 @@ export default function (eleventyConfig) {
       if (chunk === "VP8X") size = { w: 1 + b.readUIntLE(24, 3), h: 1 + b.readUIntLE(27, 3) };
       else if (chunk === "VP8L") { const bits = b.readUInt32LE(21); size = { w: 1 + (bits & 0x3fff), h: 1 + ((bits >> 14) & 0x3fff) }; }
       else if (chunk === "VP8 ") size = { w: b.readUInt16LE(26) & 0x3fff, h: b.readUInt16LE(28) & 0x3fff };
+      // תמונות שהועלו דרך מערכת העריכה (JPEG/PNG): קוראים את המידות מהקובץ עצמו
+      else if (b.toString("ascii", 1, 4) === "PNG") size = { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+      else if (b[0] === 0xff && b[1] === 0xd8) {
+        for (let i = 2; i < b.length - 9; ) {
+          if (b[i] !== 0xff) { i++; continue; }
+          const m = b[i + 1];
+          if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) { size = { w: b.readUInt16BE(i + 7), h: b.readUInt16BE(i + 5) }; break; }
+          i += 2 + b.readUInt16BE(i + 2);
+        }
+      }
     } catch (e) {}
     return (sizeCache[src] = size);
   });
