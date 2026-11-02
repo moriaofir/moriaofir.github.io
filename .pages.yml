@@ -82,6 +82,7 @@ content:
       - { name: whatsappDefault, label: הודעת וואטסאפ מוכנה, type: string }
       - { name: priceFrom, label: "שורת מחיר בעמוד המחירים, למשל: הזמנות החל מ־500 ₪ (ריק = לא מוצג)", type: string }
       - { name: analytics, label: שם החשבון ב־GoatCounter לסטטיסטיקה (ריק = כבוי), type: string }
+      - { name: googleTag, label: "מזהה Google Analytics (מתחיל ב־G-, ריק = כבוי)", type: string }
       - { name: quoteNote, label: "משפט על הצעת מחיר אחרי שיחה (דף הבית, מחירים, יצירת קשר)", type: text }
       - { name: replyTime, label: "זמן מענה בעמוד יצירת קשר, למשל: בדרך כלל באותו יום (ריק = לא מוצג)", type: string }
       - name: reviews
