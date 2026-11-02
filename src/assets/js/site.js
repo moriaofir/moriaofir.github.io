@@ -152,6 +152,8 @@ const googleLead = (method) => {
   try {
     if (typeof window.gtag !== "function") return;
     window.gtag("event", "generate_lead", { method, page: document.body.dataset.page || "", transport_type: "beacon" });
+    // המרה ב־Google Ads ("קליק לשיחה"), אם הוגדרה
+    if (window.adsConversion) window.gtag("event", "conversion", { send_to: window.adsConversion, value: 1.0, currency: "ILS", transport_type: "beacon" });
   } catch (e) { /* לא עוצר את הפנייה */ }
 };
 document.addEventListener("click", (e) => {
