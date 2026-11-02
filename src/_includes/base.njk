@@ -18,7 +18,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {#- הגנות בסיסיות: GitHub Pages לא מאפשר כותרות שרת, אז הן כאן. כלי חיצוני חדש (סקריפט, תמונה, וידאו) צריך להוסיף כאן -#}
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at{% if site.googleTag %} https://*.googletagmanager.com{% endif %}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://{{ site.analytics or 'none' }}.goatcounter.com{% if site.googleTag %} https://*.google-analytics.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.google.co.il{% endif %}; connect-src 'self' https://{{ site.analytics or 'none' }}.goatcounter.com{% if site.googleTag %} https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.google.co.il{% endif %}; font-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self' mailto: https://wa.me; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at{% if site.googleTag %} https://*.googletagmanager.com https://www.googleadservices.com{% endif %}; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://{{ site.analytics or 'none' }}.goatcounter.com{% if site.googleTag %} https://*.google-analytics.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.google.co.il https://www.googleadservices.com{% endif %}; connect-src 'self' https://{{ site.analytics or 'none' }}.goatcounter.com{% if site.googleTag %} https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://*.google.com https://*.google.co.il https://www.googleadservices.com{% endif %}; font-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self' mailto: https://wa.me; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">
@@ -101,6 +101,10 @@
       window.gtag = function () { dataLayer.push(arguments); };
       gtag("js", new Date());
       gtag("config", "{{ site.googleTag }}");
+      {%- if site.googleAdsConversion %}
+      window.adsConversion = "{{ site.googleAdsConversion }}";
+      gtag("config", window.adsConversion.split("/")[0]);
+      {%- endif %}
     }
   </script>
   {%- endif %}
