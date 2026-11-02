@@ -28,7 +28,7 @@ npm start         # תצוגה מקומית
 1. המאגר: `moriaofir/moriaofir.github.io` (ארגון GitHub חינמי של העסק).
 2. מעלים אליו את התיקייה הזו. בכל דחיפה ל־`main`, הקובץ `.github/workflows/deploy.yml` בונה ומעלה את האתר.
 3. ב־Settings → Pages במאגר: Source = GitHub Actions.
-4. הכתובת: https://moriaofir.github.io
+4. הכתובת: https://moriaofir.co.il (הכתובת הישנה moriaofir.github.io מפנה אליה אוטומטית)
 5. כשיהיה דומיין: Settings → Pages → Custom domain, ולעדכן `url` ב־`site.json`.
 
 ## עריכה בלי קוד
