@@ -44,18 +44,10 @@
     return { sub: sub, disc: disc, label: label, total: total, deposit: Math.round(total * (Number(q.depositPct) || 0) / 100) };
   }
 
-  // ---------- כניסה ----------
-  function unlock() { $("lock").hidden = true; $("app").hidden = false; show("list"); }
-  var unlocked = false;
-  try { unlocked = sessionStorage.getItem(UNLOCK) === "1" || localStorage.getItem(UNLOCK) === "1"; } catch (e) {}
-  if (!CFG.pin || unlocked) unlock();
-  $("lock-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    if ($("pin").value.trim() === String(CFG.pin)) {
-      try { localStorage.setItem(UNLOCK, "1"); } catch (e2) {}
-      unlock();
-    } else { $("pin-err").textContent = "הקוד לא נכון. נסי שוב."; }
-  });
+  // ---------- פתיחה ----------
+  // אין קוד כניסה: בעמוד הציבורי אין שום מידע. המחירון, הפרטים וההצעות נמצאים רק בטלפון של מוריה.
+  try { localStorage.removeItem("moria-quotes-unlocked"); } catch (e) {}
+  if (!Array.isArray(db.catalog)) db.catalog = [];
 
   // ---------- ניווט ----------
   var current = null;
@@ -115,7 +107,7 @@
   }
   $("new-quote").addEventListener("click", function () {
     var q = newQuote();
-    if (CFG.catalog[0]) q.lines.push(lineFrom(CFG.catalog[0]));
+    if (db.catalog[0]) q.lines.push(lineFrom(db.catalog[0]));
     db.quotes.push(q); save(); edit(q);
   });
 
@@ -173,13 +165,46 @@
     var b = e.target.closest("[data-remove]"); if (!b) return;
     current.lines.splice(+b.dataset.remove, 1); renderLines(); touch();
   });
-  $("catalog").innerHTML = CFG.catalog.map(function (p, i) {
-    return '<button class="chip" type="button" data-cat="' + i + '">' + esc(p.name) + ' · ' + money(p.price) + '</button>';
-  }).join("");
+  function renderChips() {
+    $("catalog").innerHTML = db.catalog.filter(function (p) { return p.name; }).length
+      ? db.catalog.map(function (p, i) {
+          return p.name ? '<button class="chip" type="button" data-cat="' + i + '">' + esc(p.name) + ' · ' + money(Number(p.price) || 0) + '</button>' : '';
+        }).join("")
+      : '<span class="small">עוד אין מחירון. ממלאים אותו במסך הראשי, ב"המוצרים והמחירים שלי".</span>';
+  }
   $("catalog").addEventListener("click", function (e) {
     var b = e.target.closest("[data-cat]"); if (!b) return;
-    current.lines.push(lineFrom(CFG.catalog[+b.dataset.cat])); renderLines(); touch();
+    current.lines.push(lineFrom(db.catalog[+b.dataset.cat])); renderLines(); touch();
   });
+
+  // ---------- המחירון (רק במכשיר) ----------
+  function renderCatalogEdit() {
+    $("catalog-edit").innerHTML = db.catalog.map(function (p, i) {
+      return '<div class="line">' +
+        '<div class="line-head"><input aria-label="שם המוצר" placeholder="שם המוצר" data-cat-i="' + i + '" data-cat-f="name" value="' + esc(p.name) + '">' +
+        '<button class="link danger" type="button" data-cat-del="' + i + '" aria-label="מחיקת המוצר">מחיקה</button></div>' +
+        '<input class="line-desc" aria-label="פירוט" placeholder="פירוט (רשות)" data-cat-i="' + i + '" data-cat-f="desc" value="' + esc(p.desc) + '">' +
+        '<div class="line-nums"><label>מחיר רגיל (₪)<input type="number" inputmode="decimal" min="0" data-cat-i="' + i + '" data-cat-f="price" value="' + esc(p.price) + '"></label></div></div>';
+    }).join("") || '<p class="small">הרשימה ריקה.</p>';
+    renderChips();
+  }
+  $("catalog-edit").addEventListener("change", function (e) {
+    var t = e.target; if (!t.dataset.catF) return;
+    var p = db.catalog[+t.dataset.catI]; if (!p) return;
+    p[t.dataset.catF] = t.dataset.catF === "price" ? (Number(t.value) || 0) : t.value.trim();
+    save(); renderChips();
+  });
+  $("catalog-edit").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-cat-del]"); if (!b) return;
+    if (!confirm("למחוק את המוצר מהמחירון?")) return;
+    db.catalog.splice(+b.dataset.catDel, 1); save(); renderCatalogEdit();
+  });
+  $("catalog-add").addEventListener("click", function () {
+    db.catalog.push({ name: "", desc: "", price: 0 }); save(); renderCatalogEdit();
+    var inputs = $("catalog-edit").querySelectorAll('[data-cat-f="name"]'); inputs[inputs.length - 1].focus();
+  });
+  renderCatalogEdit();
+
   $("add-free").addEventListener("click", function () {
     current.lines.push({ name: "", desc: "", qty: 1, price: 0 }); renderLines(); touch();
     var inputs = $("lines").querySelectorAll('[data-field="name"]'); inputs[inputs.length - 1].focus();
@@ -352,13 +377,16 @@
     var file = e.target.files[0]; if (!file) return;
     file.text().then(function (txt) {
       var data = JSON.parse(txt);
-      if (!data || !Array.isArray(data.quotes)) throw new Error("bad");
+      if (!data || !(Array.isArray(data.quotes) || Array.isArray(data.catalog))) throw new Error("bad");
+      data.quotes = data.quotes || [];
       var have = {}; db.quotes.forEach(function (q) { have[q.id] = true; });
       data.quotes.forEach(function (q) { if (!have[q.id]) db.quotes.push(q); });
       db.counter = Math.max(db.counter || 0, data.counter || 0);
       if (data.private && !db.private) db.private = data.private;
-      save(); renderList();
+      if (Array.isArray(data.catalog) && data.catalog.length && !db.catalog.length) db.catalog = data.catalog;
+      save(); renderList(); renderCatalogEdit();
     }).catch(function () { $("list-empty").hidden = false; $("list-empty").textContent = "הקובץ הזה לא נראה כמו גיבוי של הצעות מחיר."; });
     e.target.value = "";
   });
+  show("list");
 })();

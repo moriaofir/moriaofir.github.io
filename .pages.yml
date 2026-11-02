@@ -228,26 +228,11 @@ content:
       - { name: whatsappLineEn, label: שורה לוואטסאפ מהעמוד האנגלי, type: string }
 
   - name: priceList
-    label: הצעות מחיר (מחירון ופרטי העסק)
+    label: "הצעות מחיר (תנאים כלליים. המחירון והפרטים האישיים נשמרים רק בטלפון של מוריה)"
     type: file
     path: src/_data/priceList.json
     format: json
     fields:
-      - name: base
-        label: המוצר הראשי (נכנס לכל הצעה חדשה)
-        type: object
-        fields:
-          - { name: name, label: שם, type: string }
-          - { name: desc, label: פירוט, type: text }
-          - { name: price, label: מחיר רגיל, type: number }
-      - name: extras
-        label: עוד מוצרים לבחירה
-        type: object
-        list: true
-        fields:
-          - { name: name, label: שם, type: string, required: true }
-          - { name: desc, label: פירוט, type: string }
-          - { name: price, label: מחיר רגיל, type: number, required: true }
       - name: business
         label: "ראש ההצעה (מספר העוסק, כתובת ופרטי תשלום מוזנים רק בטלפון של מוריה, לא כאן: האתר ציבורי)"
         type: object
@@ -261,5 +246,4 @@ content:
       - { name: cancellation, label: "תנאי ביטול (ריק = לא מוצג)", type: text }
       - { name: vatNote, label: שורת מע"מ, type: string }
       - { name: thanks, label: משפט תודה בסוף ההצעה, type: string }
-      - { name: pin, label: קוד הכניסה למחולל ההצעות, type: string }
       - { name: listKey, label: "קוד בכתובת של המחולל (שינוי שלו משנה את הקישור!)", type: string }
