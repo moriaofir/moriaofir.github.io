@@ -66,12 +66,13 @@ p { margin: 0; }
 .nav.open { display: block; position: absolute; top: 100%; inset-inline: 0; background: var(--paper); background-image: url("../img/paper.png"); border-bottom: 1px solid var(--line); padding: 8px 20px 20px; box-shadow: 0 12px 24px rgba(80, 60, 30, 0.08); }
 .nav.open li + li { border-top: 1px solid var(--line); }
 .nav.open a { font-size: 19px; min-height: 52px; }
-@media (min-width: 900px) {
+/* התפריט המלא נכנס בשורה אחת רק מ־1100 פיקסלים (10 פריטים); מתחת לזה כפתור תפריט */
+@media (min-width: 1100px) {
   .menu-btn { display: none; }
   .nav, .nav.open { display: block; position: static; padding: 0; box-shadow: none; border: 0; background: none; }
   .nav ul { display: flex; gap: 28px; }
   .nav.open li + li { border: 0; }
-  .nav a, .nav.open a { font-size: 16px; min-height: 44px; }
+  .nav a, .nav.open a { font-size: 16px; min-height: 44px; white-space: nowrap; }
 }
 
 /* כפתורים */
@@ -337,3 +338,9 @@ blockquote { margin: 0; }
 /* קובייה רחבה שלישית ברצועת "מה אפשר להזמין" בדף הבית */
 .extras-strip-two a.strip-wide { grid-column: 1 / -1; }
 .extras-strip-two a.strip-wide .strip-img { aspect-ratio: 2 / 1; object-position: 50% 40%; }
+/* במחשב: שלושת הכרטיסים (כולל מיתוג אירוע) בשורה אחת ובאותו גובה, במקום כרטיס רחב ענק בשורה נפרדת */
+@media (min-width: 900px) {
+  .extras-strip-two:has(.strip-wide) { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1000px; }
+  .extras-strip-two a.strip-wide { grid-column: auto; }
+  .extras-strip-two a.strip-wide .strip-img { aspect-ratio: 4 / 3; object-position: 50% 45%; }
+}

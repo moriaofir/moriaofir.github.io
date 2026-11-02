@@ -7,6 +7,9 @@ if (menuBtn && nav) {
     const r = menuBtn.getBoundingClientRect();
     nav.style.setProperty("--mx", r.left + r.width / 2 + "px");
     nav.style.setProperty("--my", r.top + r.height / 2 + "px");
+    // הרשימה מתחילה מתחת לכותרת (שיורדת כשפס הקופון פתוח)
+    const header = menuBtn.closest("header");
+    if (header) nav.style.setProperty("--nav-top", Math.max(0, header.getBoundingClientRect().bottom) + "px");
     nav.classList.toggle("open", open);
     document.documentElement.classList.toggle("menu-open", open);
     menuBtn.setAttribute("aria-expanded", String(open));
@@ -129,11 +132,33 @@ if (sourceLabel) {
   });
 }
 
+// סטטיסטיקה: כל לחיצה על וואטסאפ (כפתור או שליחת הטופס) נספרת ב־GoatCounter כאירוע,
+// לפי העמוד ולפי המקור (מודעה, אינסטגרם...), כדי לדעת מה באמת מביא פניות
+const countWhatsApp = (kind) => {
+  try {
+    if (!window.goatcounter || !window.goatcounter.count) return;
+    const page = document.body.dataset.page || location.pathname.replace(/^\/|\.html$/g, "") || "home";
+    window.goatcounter.count({
+      path: `whatsapp-${kind}-${page}${source ? "-" + source.toLowerCase() : ""}`,
+      title: `וואטסאפ (${kind === "form" ? "טופס" : "כפתור"}) מעמוד ${page}${sourceLabel ? ", הגיעו דרך " + sourceLabel : ""}`,
+      event: true,
+    });
+  } catch (e) { /* הסטטיסטיקה לא תעצור אף פעם את הוואטסאפ */ }
+};
+document.addEventListener("click", (e) => {
+  const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
+  if (a) countWhatsApp("click");
+});
+
 // טופס יצירת קשר: נשלח כהודעת וואטסאפ מוכנה, בלי שרת ובלי חשבון נוסף
 const form = document.querySelector("form[data-whatsapp]");
 if (form) {
+  form.querySelector('[name="phone"]')?.addEventListener("input", (e) => e.target.setCustomValidity(""));
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    // טלפון: לפחות 9 ספרות, והודעה ברורה בעברית אם חסר
+    const phone = form.querySelector('[name="phone"]');
+    if (phone) phone.setCustomValidity(phone.value && (phone.value.match(/\d/g) || []).length < 9 ? "נראה שחסרות ספרות במספר הטלפון" : "");
     if (!form.reportValidity()) return;
     const data = new FormData(form);
     const lines = [
@@ -152,7 +177,9 @@ if (form) {
     if (sourceLabel) lines.push(`הגעתי דרך: ${sourceLabel}`);
     if (data.get("coupon")) lines.push(data.get("coupon"));
     const url = `https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
-    window.location.href = url;
+    countWhatsApp("form");
+    // רגע קטן כדי שהספירה תספיק לצאת לפני המעבר לוואטסאפ
+    setTimeout(() => { window.location.href = url; }, 150);
   });
 }
 

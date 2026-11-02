@@ -139,11 +139,11 @@ a.chip { display: inline-flex; align-items: center; text-decoration: none; }
 
 /* תפריט בטלפון: כתם צבעי מים שמתפשט מכפתור התפריט ומכסה את המסך */
 @property --wash { syntax: "<length>"; inherits: false; initial-value: 0px; }
-@media (max-width: 899px) {
+@media (max-width: 1099px) {
   .site-header .brand, .menu-btn { position: relative; z-index: 2; }
   .nav, .nav.open {
-    display: flex; flex-direction: column; justify-content: center; position: fixed; inset: 0; z-index: 1;
-    padding: 96px 28px calc(40px + env(safe-area-inset-bottom, 0px)); overflow-y: auto; border: 0; box-shadow: none;
+    display: flex; flex-direction: column; justify-content: safe center; position: fixed; inset: 0; z-index: 1;
+    padding: calc(var(--nav-top, 76px) + 12px) 28px calc(40px + env(safe-area-inset-bottom, 0px)); overflow-y: auto; border: 0; box-shadow: none;
     background:
       radial-gradient(60% 40% at var(--mx, 10%) var(--my, 4%), rgba(79, 163, 165, 0.34), rgba(79, 163, 165, 0) 70%),
       radial-gradient(55% 35% at 85% 78%, rgba(241, 220, 213, 0.85), rgba(241, 220, 213, 0) 70%),
@@ -160,13 +160,16 @@ a.chip { display: inline-flex; align-items: center; text-decoration: none; }
   .nav.open::after { opacity: 0.55; transform: none; transition: opacity 0.8s ease 0.45s, transform 0.8s ease 0.45s; }
   .nav ul { position: relative; z-index: 1; display: grid; gap: 2px; text-align: center; }
   .nav.open li + li { border: 0; }
-  .nav a, .nav.open a { justify-content: center; font-family: var(--font-head); font-size: 1.9rem; min-height: 58px; }
+  /* 10 פריטים: הגובה מתכווץ לפי גובה המסך כדי שגם "צרו קשר" ייכנס בטלפון קטן, ואם לא נכנס אפשר לגלול */
+  .nav ul { margin-block: auto; }
+  .nav a, .nav.open a { justify-content: center; font-family: var(--font-head); font-size: clamp(1.35rem, 4.2vh, 1.9rem); min-height: clamp(42px, 7.2vh, 58px); }
   .nav li { opacity: 0; transform: translateY(14px); transition: opacity 0.2s ease, transform 0.2s ease; }
   .nav.open li { opacity: 1; transform: none; transition: opacity 0.5s ease, transform 0.5s cubic-bezier(.2, .7, .2, 1); }
   .nav.open li:nth-child(1) { transition-delay: 0.25s; } .nav.open li:nth-child(2) { transition-delay: 0.3s; }
   .nav.open li:nth-child(3) { transition-delay: 0.35s; } .nav.open li:nth-child(4) { transition-delay: 0.4s; }
   .nav.open li:nth-child(5) { transition-delay: 0.45s; } .nav.open li:nth-child(6) { transition-delay: 0.5s; }
   .nav.open li:nth-child(7) { transition-delay: 0.55s; } .nav.open li:nth-child(8) { transition-delay: 0.6s; }
+  .nav.open li:nth-child(9) { transition-delay: 0.65s; } .nav.open li:nth-child(10) { transition-delay: 0.7s; }
   .nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: rgba(79, 163, 165, 0.3); text-decoration-thickness: 0.4em; text-underline-offset: -0.15em; text-decoration-skip-ink: none; }
   /* הכפתור הופך ל־X */
   .menu-btn svg path { transition: d 0.35s ease; }
