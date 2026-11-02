@@ -135,6 +135,7 @@ if (sourceLabel) {
 // סטטיסטיקה: כל לחיצה על וואטסאפ (כפתור או שליחת הטופס) נספרת ב־GoatCounter כאירוע,
 // לפי העמוד ולפי המקור (מודעה, אינסטגרם...), כדי לדעת מה באמת מביא פניות
 const countWhatsApp = (kind) => {
+  googleLead(kind === "form" ? "whatsapp-form" : "whatsapp");
   try {
     if (!window.goatcounter || !window.goatcounter.count) return;
     const page = document.body.dataset.page || location.pathname.replace(/^\/|\.html$/g, "") || "home";
@@ -145,9 +146,19 @@ const countWhatsApp = (kind) => {
     });
   } catch (e) { /* הסטטיסטיקה לא תעצור אף פעם את הוואטסאפ */ }
 };
+// Google Ads / Analytics: כל פנייה (וואטסאפ, טופס, טלפון) נשלחת כאירוע generate_lead,
+// כדי לראות ב־Google Ads כמה פניות הביאה כל מודעה. פועל רק כשהוגדר מזהה בהגדרות האתר.
+const googleLead = (method) => {
+  try {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", "generate_lead", { method, page: document.body.dataset.page || "", transport_type: "beacon" });
+  } catch (e) { /* לא עוצר את הפנייה */ }
+};
 document.addEventListener("click", (e) => {
   const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
   if (a) countWhatsApp("click");
+  const tel = e.target.closest && e.target.closest('a[href^="tel:"]');
+  if (tel) googleLead("phone");
 });
 
 // טופס יצירת קשר: נשלח כהודעת וואטסאפ מוכנה, בלי שרת ובלי חשבון נוסף
