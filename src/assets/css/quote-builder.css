@@ -49,10 +49,6 @@ textarea { min-height: 80px; resize: vertical; }
 label { display: block; font-size: 14px; color: var(--brown); margin: 10px 0 4px; }
 
 /* כניסה */
-.lock { min-height: 100vh; display: grid; place-items: center; }
-.lock-box { background: var(--sheet); border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; width: min(340px, 100%); display: grid; gap: 8px; text-align: center; justify-items: center; }
-.lock-box input { text-align: center; letter-spacing: .3em; }
-.lock-box .btn { width: 100%; margin-top: 8px; }
 .err { color: var(--danger); font-size: 14px; min-height: 1.3em; }
 
 /* מבנה */

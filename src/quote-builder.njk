@@ -9,6 +9,8 @@ eleventyExcludeFromCollections: true
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' data: blob:; font-src 'self' data:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="no-referrer">
   <title>הצעות מחיר · {{ site.name }}</title>
   <meta name="theme-color" content="#FAF6EE">
   <link rel="icon" type="image/png" href="assets/img/icon-512.png">
@@ -18,18 +20,7 @@ eleventyExcludeFromCollections: true
 </head>
 <body>
 
-<div class="lock" id="lock">
-  <form class="lock-box" id="lock-form">
-    <img src="assets/img/logo-small.png" alt="" width="64" height="61">
-    <h1>הצעות מחיר</h1>
-    <label for="pin">קוד כניסה</label>
-    <input id="pin" type="password" inputmode="numeric" autocomplete="off">
-    <button class="btn btn-main" type="submit">כניסה</button>
-    <p class="err" id="pin-err" role="alert"></p>
-  </form>
-</div>
-
-<div class="app" id="app" hidden>
+<div class="app" id="app">
 
   {# רשימת ההצעות #}
   <section class="view" id="view-list">
@@ -39,6 +30,12 @@ eleventyExcludeFromCollections: true
     </header>
     <div class="list" id="quote-list"></div>
     <p class="empty" id="list-empty">עוד אין הצעות. לוחצים על "הצעה חדשה" אחרי השיחה עם הזוג.</p>
+    <details class="backup" id="catalog-box">
+      <summary>המוצרים והמחירים שלי (נשמרים רק בטלפון הזה)</summary>
+      <p class="small">המחירון לא נשמר באתר, כי הקוד שלו ציבורי. המוצר הראשון ברשימה נכנס לבד לכל הצעה חדשה. אפשר גם לטעון את קובץ המחירון ששילה שלח, דרך "שחזור מגיבוי".</p>
+      <div id="catalog-edit"></div>
+      <button class="btn btn-ghost btn-sm" type="button" id="catalog-add">+ מוצר</button>
+    </details>
     <details class="backup" id="private-box">
       <summary>פרטים אישיים להצעה (נשמרים רק בטלפון הזה)</summary>
       <p class="small">מספר העוסק ופרטי התשלום לא נשמרים באתר, כי הקוד שלו ציבורי. ממלאים פעם אחת, והם יופיעו בכל הצעה. הם נכללים גם בגיבוי.</p>
@@ -50,7 +47,7 @@ eleventyExcludeFromCollections: true
     </details>
     <details class="backup">
       <summary>גיבוי ושחזור</summary>
-      <p class="small">ההצעות נשמרות רק בטלפון הזה. כדאי להוריד גיבוי מדי פעם, למשל לגוגל דרייב.</p>
+      <p class="small">ההצעות, המחירון והפרטים האישיים נשמרים רק בטלפון הזה, ורק בכתובת הזו של האתר. כדאי להוריד גיבוי מדי פעם, למשל לגוגל דרייב, ובמיוחד לפני מעבר לכתובת חדשה.</p>
       <div class="row">
         <button class="btn btn-ghost btn-sm" type="button" id="export">הורדת גיבוי</button>
         <label class="btn btn-ghost btn-sm" for="import">שחזור מגיבוי</label>
@@ -148,7 +145,6 @@ eleventyExcludeFromCollections: true
 </div>
 
 <script id="config" type="application/json">{{ {
-  pin: priceList.pin,
   business: priceList.business,
   name: site.name,
   tagline: site.tagline,
@@ -164,8 +160,7 @@ eleventyExcludeFromCollections: true
   paymentTerms: priceList.paymentTerms,
   payment: priceList.payment,
   thanks: priceList.thanks,
-  couponCode: coupon.code,
-  catalog: [priceList.base].concat(priceList.extras)
+  couponCode: coupon.code
 } | json | safe }}</script>
 <script src="assets/js/vendor/html2canvas-1.4.1.min.js" defer></script>
 <script src="assets/js/vendor/jspdf-2.5.1.umd.min.js" defer></script>

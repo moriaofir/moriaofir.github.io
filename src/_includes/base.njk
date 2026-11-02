@@ -17,6 +17,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {#- הגנות בסיסיות: GitHub Pages לא מאפשר כותרות שרת, אז הן כאן. כלי חיצוני חדש (סקריפט, תמונה, וידאו) צריך להוסיף כאן -#}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://{{ site.analytics or 'none' }}.goatcounter.com; connect-src 'self' https://{{ site.analytics or 'none' }}.goatcounter.com; font-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self' mailto: https://wa.me; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">
   <link rel="canonical" href="{{ site.url }}/{{ canonical or '' }}">
