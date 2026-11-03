@@ -51,6 +51,9 @@ description: "ספרו לי על האירוע ונתחיל לצייר. וואט�
     <ul class="contact-list">
       <li>וואטסאפ: <a href="{{ site.whatsappDefault | whatsapp(site.phone) }}" dir="ltr">{{ site.phoneDisplay }}</a></li>
       <li>מייל: <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+      {%- if site.instagram %}
+      <li>אינסטגרם: <a href="{{ site.instagram }}" dir="ltr">@{{ site.instagram | replace("https://www.instagram.com/", "") | replace("/", "") }}</a></li>
+      {%- endif %}
       <li>{{ site.area }}</li>
     </ul>
   </div>

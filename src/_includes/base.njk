@@ -70,6 +70,9 @@
     "telephone": "+{{ site.phone }}",
     "email": "{{ site.email }}",
     "areaServed": { "@type": "Country", "name": "ישראל" },
+    {%- if site.instagram %}
+    "sameAs": ["{{ site.instagram }}"],
+    {%- endif %}
     "priceRange": "החל מ־500 ₪"
   }
   </script>
